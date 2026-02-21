@@ -5,6 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { cn } from "@/lib/utils";
 
 const PARTICLE_COUNT = 800;
 
@@ -220,24 +221,24 @@ export function Hero() {
                 </motion.p>
 
                 <motion.div
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <Link
+                    <PremiumButton
                         href="/work"
-                        className="group px-8 py-3.5 bg-white text-slate-900 font-semibold rounded-lg hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/10 flex items-center gap-2"
+                        variant="primary"
                     >
                         See Our Work
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
+                    </PremiumButton>
+                    <PremiumButton
                         href="/contact"
-                        className="px-8 py-3.5 glass glass-hover text-slate-200 font-semibold rounded-lg transition-all flex items-center gap-2"
+                        variant="secondary"
                     >
                         Start a Project
-                    </Link>
+                    </PremiumButton>
                 </motion.div>
             </div>
 
@@ -250,5 +251,34 @@ export function Hero() {
                 <ChevronDown size={24} className="text-slate-500" />
             </motion.div>
         </section>
+    );
+}
+
+function PremiumButton({
+    href,
+    variant = "primary",
+    children,
+}: {
+    href: string;
+    variant?: "primary" | "secondary";
+    children: React.ReactNode;
+}) {
+    return (
+        <Link href={href} className="relative group">
+            {/* Background Glow */}
+            <div className={`absolute -inset-2 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 ${variant === "primary" ? "bg-cyan-400/20" : "bg-blue-600/15"}`} />
+
+            {/* Inner Ring Glow */}
+            <div className={`absolute inset-0 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 ${variant === "primary" ? "bg-cyan-400/10" : "bg-blue-600/10"}`} />
+
+            <div className={cn(
+                "relative flex items-center gap-2.5 px-10 py-4 rounded-full font-bold transition-all duration-300 active:scale-95",
+                variant === "primary"
+                    ? "bg-white text-slate-900 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                    : "glass glass-hover text-white border border-white/10 hover:border-white/20"
+            )}>
+                {children}
+            </div>
+        </Link>
     );
 }
