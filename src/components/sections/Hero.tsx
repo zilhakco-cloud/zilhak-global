@@ -304,7 +304,7 @@ function PremiumButton({
                 <div className={`absolute inset-0 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500 ${variant === "primary" ? "bg-cyan-400/10" : "bg-blue-600/10"}`} />
 
                 <div className={cn(
-                    "relative flex items-center gap-2.5 px-10 py-4 rounded-full font-bold transition-all duration-300 active:scale-95 no-underline border",
+                    "relative flex items-center justify-center gap-3 px-12 py-4 rounded-full font-bold transition-all duration-300 active:scale-95 no-underline border whitespace-nowrap",
                     variant === "primary"
                         ? "bg-white text-slate-900 border-white shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]"
                         : "glass glass-hover text-white border-white/10 hover:border-white/30"
