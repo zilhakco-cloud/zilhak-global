@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
-const PARTICLE_COUNT = 500;
+const PARTICLE_COUNT = 800;
 
 function Particles() {
     const meshRef = useRef<THREE.Points>(null);
@@ -40,9 +40,9 @@ function Particles() {
                 x += (Math.random() - 0.5) * 0.4;
                 y += (Math.random() - 0.5) * 0.4;
             } else {
-                x = (Math.random() - 0.5) * 12;
-                y = (Math.random() - 0.5) * 7;
-                z = (Math.random() - 0.5) * 3;
+                x = (Math.random() - 0.5) * 15;
+                y = (Math.random() - 0.5) * 10;
+                z = (Math.random() - 0.5) * 5;
             }
 
             pos[i3] = x;
@@ -61,7 +61,7 @@ function Particles() {
                 col[i3] = 139 / 255; col[i3 + 1] = 92 / 255; col[i3 + 2] = 246 / 255;
             }
 
-            siz[i] = Math.random() * 2.5 + 0.5;
+            siz[i] = Math.random() * 2 + 0.5;
         }
 
         return { positions: pos, originalPositions: origPos, colors: col, sizes: siz };
@@ -89,24 +89,25 @@ function Particles() {
             const oy = originalPositions[i3 + 1];
             const oz = originalPositions[i3 + 2];
 
-            posArray[i3] = ox + Math.sin(time * 0.2 + i * 0.01) * 0.12;
-            posArray[i3 + 1] = oy + Math.cos(time * 0.15 + i * 0.015) * 0.12;
-            posArray[i3 + 2] = oz + Math.sin(time * 0.3 + i * 0.02) * 0.08;
+            // Calmer, more subtle floating
+            posArray[i3] = ox + Math.sin(time * 0.15 + i * 0.01) * 0.08;
+            posArray[i3 + 1] = oy + Math.cos(time * 0.1 + i * 0.015) * 0.08;
+            posArray[i3 + 2] = oz + Math.sin(time * 0.2 + i * 0.02) * 0.05;
 
             const mx = mouseRef.current.x * 5;
             const my = mouseRef.current.y * 3;
             const dx = posArray[i3] - mx;
             const dy = posArray[i3 + 1] - my;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 2) {
-                const force = (2 - dist) / 2;
-                posArray[i3] += dx * force * 0.2;
-                posArray[i3 + 1] += dy * force * 0.2;
+            if (dist < 1.5) {
+                const force = (1.5 - dist) / 1.5;
+                posArray[i3] += dx * force * 0.15;
+                posArray[i3 + 1] += dy * force * 0.15;
             }
         }
 
         meshRef.current.geometry.attributes.position.needsUpdate = true;
-        meshRef.current.rotation.z = time * 0.008;
+        meshRef.current.rotation.z = time * 0.005;
     });
 
     return (
@@ -117,7 +118,7 @@ function Particles() {
                 <bufferAttribute attach="attributes-size" args={[sizes, 1]} />
             </bufferGeometry>
             <pointsMaterial
-                vertexColors transparent opacity={0.6} size={2}
+                vertexColors transparent opacity={0.3} size={0.05}
                 sizeAttenuation blending={THREE.AdditiveBlending} depthWrite={false}
             />
         </points>
@@ -175,11 +176,11 @@ export function Hero() {
             {reducedMotion ? <StaticFallback /> : showCanvas ? <DynamicScene /> : <StaticFallback />}
 
             {/* Aceternity Spotlight Effects */}
-            <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#22d3ee" />
-            <Spotlight className="top-10 left-full -translate-x-[40%] md:-top-20" fill="#2563eb" />
+            <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="rgba(34, 211, 238, 0.4)" />
+            <Spotlight className="top-10 left-full -translate-x-[40%] md:-top-20" fill="rgba(37, 99, 235, 0.3)" />
 
             {/* Background Beams */}
-            <BackgroundBeams className="opacity-30" />
+            <BackgroundBeams className="opacity-15" />
 
             {/* Gradient overlays */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030712] z-10" />
