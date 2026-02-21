@@ -46,7 +46,7 @@ export default function InvestorsPage() {
             <section className="section">
                 <div className="container max-w-4xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="glass rounded-xl p-8">
+                        <div className="glass rounded-2xl p-12">
                             <h3 className="font-display font-bold text-xl mb-4 text-red-400">The Problem</h3>
                             <ul className="space-y-3 text-sm text-z-text-muted">
                                 <li className="flex items-start gap-2"><span className="text-red-400 mt-1">•</span> Pakistani SMEs are 5-10 years behind on AI adoption</li>
@@ -55,7 +55,7 @@ export default function InvestorsPage() {
                                 <li className="flex items-start gap-2"><span className="text-red-400 mt-1">•</span> No bridge between university talent and industry needs</li>
                             </ul>
                         </div>
-                        <div className="glass rounded-xl p-8" style={{ background: "linear-gradient(135deg, rgba(0,229,195,0.05), transparent)" }}>
+                        <div className="glass rounded-2xl p-12" style={{ background: "linear-gradient(135deg, rgba(0,229,195,0.05), transparent)" }}>
                             <h3 className="font-display font-bold text-xl mb-4 text-z-teal">Our Solution</h3>
                             <ul className="space-y-3 text-sm text-z-text-muted">
                                 <li className="flex items-start gap-2"><span className="text-z-teal mt-1">•</span> Zilhak builds tools — AI chatbots, agentic systems, automations</li>
@@ -69,10 +69,10 @@ export default function InvestorsPage() {
             </section>
 
             {/* Traction */}
-            <section className="section-sm bg-z-bg-surface/50 border-y border-z-border">
+            <section className="section-sm bg-z-bg-surface/50 border-y border-z-border py-20 md:py-32">
                 <div className="container">
-                    <h2 className="text-center font-display font-bold text-2xl mb-10">Traction</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                    <h2 className="text-center font-display font-bold text-3xl mb-16">Traction</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-5xl mx-auto">
                         {traction.map((t, i) => (
                             <div key={i} className="text-center">
                                 <t.icon size={24} className="text-z-blue mx-auto mb-3 opacity-70" />
@@ -93,9 +93,9 @@ export default function InvestorsPage() {
                         market alone is growing at 35% CAGR. With 220M+ population and rapid digital
                         adoption, the opportunity for AI-first service companies is massive.
                     </p>
-                    <div className="glass rounded-xl p-8 inline-block">
-                        <p className="text-sm text-z-text-muted mb-2">We are looking for</p>
-                        <p className="font-display font-semibold text-lg">Microsoft for Startups · Google for Startups · NAVTTC Partnership · Strategic Investment</p>
+                    <div className="glass rounded-2xl p-12 inline-block max-w-2xl">
+                        <p className="text-sm text-z-text-muted mb-4 uppercase tracking-widest font-mono">We are looking for</p>
+                        <p className="font-display font-semibold text-xl leading-relaxed text-white">Microsoft for Startups · Google for Startups · NAVTTC Partnership · Strategic Investment</p>
                     </div>
                 </div>
             </section>
@@ -104,25 +104,25 @@ export default function InvestorsPage() {
             <section className="section">
                 <div className="container text-center">
                     <h2 className="font-display font-bold text-2xl mb-8">Downloads</h2>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        <a href="#" className="glass rounded-lg px-6 py-4 flex items-center gap-3 hover:border-z-blue/20 transition-all">
-                            <Download size={18} className="text-z-blue" />
+                    <div className="flex flex-wrap justify-center gap-6">
+                        <a href="#" className="glass rounded-xl px-8 py-6 flex items-center gap-4 hover:border-z-blue/40 transition-all group">
+                            <Download size={22} className="text-z-blue group-hover:scale-110 transition-transform" />
                             <div className="text-left">
-                                <p className="text-sm font-medium">Pitch Deck PDF</p>
+                                <p className="text-base font-semibold text-white">Pitch Deck PDF</p>
                                 <p className="text-xs text-z-text-muted">Updated quarterly</p>
                             </div>
                         </a>
-                        <a href="#" className="glass rounded-lg px-6 py-4 flex items-center gap-3 hover:border-z-blue/20 transition-all">
-                            <Download size={18} className="text-z-blue" />
+                        <a href="#" className="glass rounded-xl px-8 py-6 flex items-center gap-4 hover:border-z-blue/40 transition-all group">
+                            <Download size={22} className="text-z-blue group-hover:scale-110 transition-transform" />
                             <div className="text-left">
-                                <p className="text-sm font-medium">Company Overview</p>
+                                <p className="text-base font-semibold text-white">Company Overview</p>
                                 <p className="text-xs text-z-text-muted">One-pager</p>
                             </div>
                         </a>
-                        <a href="#" className="glass rounded-lg px-6 py-4 flex items-center gap-3 hover:border-z-blue/20 transition-all">
-                            <Download size={18} className="text-z-blue" />
+                        <a href="#" className="glass rounded-xl px-8 py-6 flex items-center gap-4 hover:border-z-blue/40 transition-all group">
+                            <Download size={22} className="text-z-blue group-hover:scale-110 transition-transform" />
                             <div className="text-left">
-                                <p className="text-sm font-medium">FBR Certificate</p>
+                                <p className="text-base font-semibold text-white">FBR Certificate</p>
                                 <p className="text-xs text-z-text-muted">Registration scan</p>
                             </div>
                         </a>

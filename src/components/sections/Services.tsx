@@ -73,10 +73,10 @@ export function Services() {
                                 >
                                     <Link
                                         href={`/services#${service.id}`}
-                                        className={`group block bg-white/[0.03] backdrop-blur-lg rounded-[15px] p-6 md:p-8 h-full transition-all duration-300 hover:bg-white/[0.06] ${accent.border}`}
+                                        className={`group block bg-white/[0.03] backdrop-blur-lg rounded-[15px] p-9 md:p-12 h-full transition-all duration-300 hover:bg-white/[0.06] ${accent.border}`}
                                     >
-                                        <div className={`w-11 h-11 rounded-lg bg-white/5 flex items-center justify-center mb-5 ${accent.icon}`}>
-                                            <service.icon size={22} />
+                                        <div className={`w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 ${accent.icon}`}>
+                                            <service.icon size={28} />
                                         </div>
                                         <h3 className="font-bold tracking-tight text-lg text-white mb-2 group-hover:text-white transition-colors">
                                             {service.title}

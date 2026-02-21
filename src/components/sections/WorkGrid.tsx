@@ -62,7 +62,7 @@ export function WorkGrid() {
                 </div>
 
                 {/* Bento Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[280px]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[320px]">
                     <AnimatePresence mode="popLayout">
                         {filtered.map((project) => (
                             <motion.div
@@ -72,7 +72,7 @@ export function WorkGrid() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                className={`group relative rounded-xl overflow-hidden bg-white/[0.03] backdrop-blur-md border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300 ${project.size === "large" ? "sm:col-span-2" : ""
+                                className={`group relative rounded-2xl overflow-hidden bg-white/[0.03] backdrop-blur-md border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300 ${project.size === "large" ? "sm:col-span-2" : ""
                                     }`}
                             >
                                 {/* Border Beam on featured cards */}
@@ -91,7 +91,7 @@ export function WorkGrid() {
                                     background: `radial-gradient(ellipse at 50% 0%, ${project.category === "ai" ? "rgba(34,211,238,0.12)" : project.category === "web" ? "rgba(16,185,129,0.12)" : "rgba(245,158,11,0.12)"}, transparent 70%)`,
                                 }} />
 
-                                <div className="relative z-10 p-6 h-full flex flex-col justify-between">
+                                <div className="relative z-10 p-9 h-full flex flex-col justify-between">
                                     <div>
                                         <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/[0.06] text-slate-400 mb-4">
                                             {project.badge}

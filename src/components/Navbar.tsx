@@ -63,7 +63,7 @@ export function Navbar() {
                     ))}
                     <Link
                         href="/investors"
-                        className="ml-3 px-5 py-2 text-sm font-semibold bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/5"
+                        className="ml-3 px-7 py-2.5 text-sm font-semibold bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/5"
                     >
                         Investors
                     </Link>
@@ -102,7 +102,7 @@ export function Navbar() {
                             <Link
                                 href="/investors"
                                 onClick={() => setMobileOpen(false)}
-                                className="mt-2 px-5 py-3 text-sm font-semibold bg-white text-slate-900 rounded-lg text-center hover:bg-slate-100 transition-all"
+                                className="mt-2 px-7 py-3.5 text-sm font-semibold bg-white text-slate-900 rounded-lg text-center hover:bg-slate-100 transition-all"
                             >
                                 Investors
                             </Link>

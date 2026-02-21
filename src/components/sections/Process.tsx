@@ -61,7 +61,7 @@ export function Process() {
                     {/* Mobile connector line */}
                     <div className="md:hidden absolute top-0 bottom-0 left-7 w-px bg-gradient-to-b from-cyan-400/20 via-blue-500/20 to-violet-500/20" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16">
                         {processSteps.map((step, i) => (
                             <motion.div
                                 key={step.step}

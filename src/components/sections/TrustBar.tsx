@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export function TrustBar() {
     return (
-        <section className="section-sm relative border-y border-white/[0.04]">
+        <section className="section-sm relative border-y border-white/[0.04] py-10 md:py-16">
             <div className="container max-w-7xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
                     {stats.map((stat, i) => (

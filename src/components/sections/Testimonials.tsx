@@ -76,7 +76,7 @@ function MagicCard({
     return (
         <div className="flex-shrink-0 w-[380px] group relative rounded-xl overflow-hidden transition-all duration-300">
             {/* Card with subtle border and 10% opacity fill */}
-            <div className="relative p-6 bg-white/[0.03] backdrop-blur-md border border-white/[0.06] rounded-xl hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300">
+            <div className="relative p-9 bg-white/[0.03] backdrop-blur-md border border-white/[0.06] rounded-xl hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300">
                 <Quote size={18} className="text-cyan-400/30 mb-4" />
                 <p className="text-sm text-slate-400 leading-relaxed mb-5">
                     &quot;{quote}&quot;
