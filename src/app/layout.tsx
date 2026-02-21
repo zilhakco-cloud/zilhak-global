@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { LenisProvider } from "@/components/LenisProvider";
 import { CustomCursor } from "@/components/CustomCursor";
+import { LightLeak } from "@/components/ui/light-leak";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -87,6 +88,7 @@ export default function RootLayout({
         />
         <LenisProvider>
           <CustomCursor />
+          <LightLeak />
           <Navbar />
           <main className="min-h-screen">{children}</main>
           <Footer />

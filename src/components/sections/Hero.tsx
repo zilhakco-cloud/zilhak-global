@@ -152,7 +152,7 @@ function StaticFallback() {
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useSpring, useMotionValue } from "framer-motion";
 
 const DynamicScene = dynamic(() => Promise.resolve(Scene), {
     ssr: false,
@@ -263,22 +263,55 @@ function PremiumButton({
     variant?: "primary" | "secondary";
     children: React.ReactNode;
 }) {
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    const springX = useSpring(mouseX, { damping: 20, stiffness: 150 });
+    const springY = useSpring(mouseY, { damping: 20, stiffness: 150 });
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Calculate distance from center, capped at a reasonable "pull" range
+        const distanceX = e.clientX - centerX;
+        const distanceY = e.clientY - centerY;
+
+        mouseX.set(distanceX * 0.35); // Adjust sensitivity
+        mouseY.set(distanceY * 0.35);
+    };
+
+    const handleMouseLeave = () => {
+        mouseX.set(0);
+        mouseY.set(0);
+    };
+
     return (
         <Link href={href} className="relative group">
-            {/* Background Glow */}
-            <div className={`absolute -inset-2 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 ${variant === "primary" ? "bg-cyan-400/20" : "bg-blue-600/15"}`} />
+            <motion.div
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                    x: springX,
+                    y: springY,
+                }}
+            >
+                {/* Background Glow */}
+                <div className={`absolute -inset-4 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 ${variant === "primary" ? "bg-cyan-400/20" : "bg-blue-600/15"}`} />
 
-            {/* Inner Ring Glow */}
-            <div className={`absolute inset-0 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 ${variant === "primary" ? "bg-cyan-400/10" : "bg-blue-600/10"}`} />
+                {/* Inner Ring Glow */}
+                <div className={`absolute inset-0 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500 ${variant === "primary" ? "bg-cyan-400/10" : "bg-blue-600/10"}`} />
 
-            <div className={cn(
-                "relative flex items-center gap-2.5 px-10 py-4 rounded-full font-bold transition-all duration-300 active:scale-95 no-underline",
-                variant === "primary"
-                    ? "bg-white text-slate-900 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
-                    : "glass glass-hover text-white border border-white/10 hover:border-white/20"
-            )}>
-                {children}
-            </div>
+                <div className={cn(
+                    "relative flex items-center gap-2.5 px-10 py-4 rounded-full font-bold transition-all duration-300 active:scale-95 no-underline border",
+                    variant === "primary"
+                        ? "bg-white text-slate-900 border-white shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]"
+                        : "glass glass-hover text-white border-white/10 hover:border-white/30"
+                )}>
+                    {children}
+                </div>
+            </motion.div>
         </Link>
     );
 }
