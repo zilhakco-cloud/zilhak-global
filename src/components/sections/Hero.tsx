@@ -4,15 +4,14 @@ import { useRef, useEffect, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Spotlight } from "@/components/ui/spotlight";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
-const PARTICLE_COUNT = 600;
+const PARTICLE_COUNT = 500;
 
 function Particles() {
     const meshRef = useRef<THREE.Points>(null);
     const mouseRef = useRef({ x: 0, y: 0 });
-    const [hovered, setHovered] = useState(false);
 
-    // Generate Z-shaped particle positions
     const { positions, originalPositions, colors, sizes } = useMemo(() => {
         const pos = new Float32Array(PARTICLE_COUNT * 3);
         const origPos = new Float32Array(PARTICLE_COUNT * 3);
@@ -23,32 +22,26 @@ function Particles() {
             const i3 = i * 3;
             let x: number, y: number, z: number;
 
-            // First ~40% form the Z shape loosely
-            if (i < PARTICLE_COUNT * 0.4) {
-                const t = (i / (PARTICLE_COUNT * 0.4));
+            if (i < PARTICLE_COUNT * 0.35) {
+                const t = i / (PARTICLE_COUNT * 0.35);
                 if (t < 0.33) {
-                    // Top bar of Z
                     x = (t / 0.33) * 4 - 2;
-                    y = 2 + (Math.random() - 0.5) * 0.3;
+                    y = 2 + (Math.random() - 0.5) * 0.2;
                 } else if (t < 0.66) {
-                    // Diagonal of Z
                     const dt = (t - 0.33) / 0.33;
                     x = 2 - dt * 4;
                     y = 2 - dt * 4;
                 } else {
-                    // Bottom bar of Z
                     const dt = (t - 0.66) / 0.34;
                     x = -2 + dt * 4;
-                    y = -2 + (Math.random() - 0.5) * 0.3;
+                    y = -2 + (Math.random() - 0.5) * 0.2;
                 }
-                z = (Math.random() - 0.5) * 1;
-                // Add some organic spread
-                x += (Math.random() - 0.5) * 0.5;
-                y += (Math.random() - 0.5) * 0.5;
+                z = (Math.random() - 0.5) * 0.8;
+                x += (Math.random() - 0.5) * 0.4;
+                y += (Math.random() - 0.5) * 0.4;
             } else {
-                // Remaining particles are scattered in the field
-                x = (Math.random() - 0.5) * 10;
-                y = (Math.random() - 0.5) * 6;
+                x = (Math.random() - 0.5) * 12;
+                y = (Math.random() - 0.5) * 7;
                 z = (Math.random() - 0.5) * 3;
             }
 
@@ -59,26 +52,16 @@ function Particles() {
             origPos[i3 + 1] = y;
             origPos[i3 + 2] = z;
 
-            // Color gradient: blue → teal → purple
             const colorChoice = Math.random();
-            if (colorChoice < 0.4) {
-                // Blue
-                col[i3] = 10 / 255;
-                col[i3 + 1] = 132 / 255;
-                col[i3 + 2] = 255 / 255;
-            } else if (colorChoice < 0.7) {
-                // Teal
-                col[i3] = 0;
-                col[i3 + 1] = 229 / 255;
-                col[i3 + 2] = 195 / 255;
+            if (colorChoice < 0.5) {
+                col[i3] = 34 / 255; col[i3 + 1] = 211 / 255; col[i3 + 2] = 238 / 255;
+            } else if (colorChoice < 0.8) {
+                col[i3] = 37 / 255; col[i3 + 1] = 99 / 255; col[i3 + 2] = 235 / 255;
             } else {
-                // Purple
-                col[i3] = 110 / 255;
-                col[i3 + 1] = 64 / 255;
-                col[i3 + 2] = 201 / 255;
+                col[i3] = 139 / 255; col[i3 + 1] = 92 / 255; col[i3 + 2] = 246 / 255;
             }
 
-            siz[i] = Math.random() * 3 + 1;
+            siz[i] = Math.random() * 2.5 + 0.5;
         }
 
         return { positions: pos, originalPositions: origPos, colors: col, sizes: siz };
@@ -90,18 +73,9 @@ function Particles() {
                 x: (e.clientX / window.innerWidth) * 2 - 1,
                 y: -(e.clientY / window.innerHeight) * 2 + 1,
             };
-            setHovered(true);
         };
-
-        const handleMouseLeave = () => setHovered(false);
-
         window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("mouseleave", handleMouseLeave);
-
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-            window.removeEventListener("mouseleave", handleMouseLeave);
-        };
+        return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
     useFrame((state) => {
@@ -115,54 +89,36 @@ function Particles() {
             const oy = originalPositions[i3 + 1];
             const oz = originalPositions[i3 + 2];
 
-            // Gentle floating motion
-            posArray[i3] = ox + Math.sin(time * 0.3 + i * 0.01) * 0.15;
-            posArray[i3 + 1] = oy + Math.cos(time * 0.2 + i * 0.015) * 0.15;
-            posArray[i3 + 2] = oz + Math.sin(time * 0.4 + i * 0.02) * 0.1;
+            posArray[i3] = ox + Math.sin(time * 0.2 + i * 0.01) * 0.12;
+            posArray[i3 + 1] = oy + Math.cos(time * 0.15 + i * 0.015) * 0.12;
+            posArray[i3 + 2] = oz + Math.sin(time * 0.3 + i * 0.02) * 0.08;
 
-            // Mouse repulsion
-            if (hovered) {
-                const mx = mouseRef.current.x * 5;
-                const my = mouseRef.current.y * 3;
-                const dx = posArray[i3] - mx;
-                const dy = posArray[i3 + 1] - my;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 2) {
-                    const force = (2 - dist) / 2;
-                    posArray[i3] += dx * force * 0.3;
-                    posArray[i3 + 1] += dy * force * 0.3;
-                }
+            const mx = mouseRef.current.x * 5;
+            const my = mouseRef.current.y * 3;
+            const dx = posArray[i3] - mx;
+            const dy = posArray[i3 + 1] - my;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 2) {
+                const force = (2 - dist) / 2;
+                posArray[i3] += dx * force * 0.2;
+                posArray[i3 + 1] += dy * force * 0.2;
             }
         }
 
         meshRef.current.geometry.attributes.position.needsUpdate = true;
-        meshRef.current.rotation.z = time * 0.01;
+        meshRef.current.rotation.z = time * 0.008;
     });
 
     return (
         <points ref={meshRef}>
             <bufferGeometry>
-                <bufferAttribute
-                    attach="attributes-position"
-                    args={[positions, 3]}
-                />
-                <bufferAttribute
-                    attach="attributes-color"
-                    args={[colors, 3]}
-                />
-                <bufferAttribute
-                    attach="attributes-size"
-                    args={[sizes, 1]}
-                />
+                <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+                <bufferAttribute attach="attributes-color" args={[colors, 3]} />
+                <bufferAttribute attach="attributes-size" args={[sizes, 1]} />
             </bufferGeometry>
             <pointsMaterial
-                vertexColors
-                transparent
-                opacity={0.8}
-                size={2.5}
-                sizeAttenuation
-                blending={THREE.AdditiveBlending}
-                depthWrite={false}
+                vertexColors transparent opacity={0.6} size={2}
+                sizeAttenuation blending={THREE.AdditiveBlending} depthWrite={false}
             />
         </points>
     );
@@ -171,13 +127,13 @@ function Particles() {
 function Scene() {
     return (
         <Canvas
-            camera={{ position: [0, 0, 6], fov: 60 }}
+            camera={{ position: [0, 0, 7], fov: 55 }}
             style={{ position: "absolute", inset: 0 }}
             dpr={[1, 1.5]}
             gl={{ antialias: true, alpha: true }}
         >
-            <color attach="background" args={["#05070A"]} />
-            <fog attach="fog" args={["#05070A", 5, 15]} />
+            <color attach="background" args={["#030712"]} />
+            <fog attach="fog" args={["#030712", 6, 16]} />
             <Particles />
         </Canvas>
     );
@@ -185,19 +141,16 @@ function Scene() {
 
 function StaticFallback() {
     return (
-        <div
-            className="absolute inset-0"
-            style={{
-                background:
-                    "radial-gradient(ellipse at 30% 40%, rgba(10,132,255,0.2) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(0,229,195,0.15) 0%, transparent 60%), radial-gradient(ellipse at 50% 50%, rgba(124,58,237,0.12) 0%, transparent 70%), #05070A",
-            }}
-        />
+        <div className="absolute inset-0" style={{
+            background: "radial-gradient(ellipse at 30% 40%, rgba(34,211,238,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(37,99,235,0.06) 0%, transparent 60%), #030712",
+        }} />
     );
 }
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 const DynamicScene = dynamic(() => Promise.resolve(Scene), {
     ssr: false,
@@ -212,7 +165,6 @@ export function Hero() {
         const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         setReducedMotion(prefersReduced);
         if (!prefersReduced) {
-            // Delay canvas load for LCP optimization
             const timer = setTimeout(() => setShowCanvas(true), 100);
             return () => clearTimeout(timer);
         }
@@ -220,61 +172,82 @@ export function Hero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* 3D Background */}
             {reducedMotion ? <StaticFallback /> : showCanvas ? <DynamicScene /> : <StaticFallback />}
 
-            {/* ✨ Aceternity Spotlight Effect */}
-            <Spotlight
-                className="-top-40 left-0 md:left-60 md:-top-20"
-                fill="#0A84FF"
-            />
-            <Spotlight
-                className="top-10 left-full -translate-x-[40%] md:-top-20"
-                fill="#00E5C3"
-            />
+            {/* Aceternity Spotlight Effects */}
+            <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#22d3ee" />
+            <Spotlight className="top-10 left-full -translate-x-[40%] md:-top-20" fill="#2563eb" />
+
+            {/* Background Beams */}
+            <BackgroundBeams className="opacity-30" />
 
             {/* Gradient overlays */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-z-bg-base z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-z-bg-base/50 via-transparent to-z-bg-base/50 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030712] z-10" />
 
             {/* Content */}
-            <div className="relative z-20 container text-center max-w-4xl mx-auto px-6">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-z-text-muted mb-8 animate-fade-up">
-                    <span className="w-2 h-2 rounded-full bg-z-teal animate-pulse-glow" />
-                    FBR-Registered AI & Tech Company
-                </div>
+            <div className="relative z-20 max-w-5xl mx-auto text-center px-6">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-slate-400 mb-8">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-glow" />
+                        FBR-Registered AI & Tech Company
+                    </div>
+                </motion.div>
 
-                <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-bold mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-                    AI That Thinks.{" "}
+                <motion.h1
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 gradient-text-hero"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    AI That Thinks.
+                    <br />
                     <span className="gradient-text">Solutions That Scale.</span>
-                </h1>
+                </motion.h1>
 
-                <p className="text-lg sm:text-xl text-z-text-muted max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+                <motion.p
+                    className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
                     We build agentic AI systems, ship production apps, and grow businesses
-                    with intelligent automations — backed by 150+ trained builders from DigiNext Society.
-                </p>
+                    with intelligent automations — backed by 150+ trained builders.
+                </motion.p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+                <motion.div
+                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                >
                     <Link
                         href="/work"
-                        className="group px-8 py-3.5 bg-z-blue text-white font-semibold rounded-lg hover:bg-z-blue/90 transition-all hover:shadow-lg hover:shadow-z-blue/25 flex items-center gap-2"
+                        className="group px-8 py-3.5 bg-white text-slate-900 font-semibold rounded-lg hover:bg-slate-100 transition-all hover:shadow-lg hover:shadow-white/10 flex items-center gap-2"
                     >
                         See Our Work
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
                         href="/contact"
-                        className="px-8 py-3.5 glass text-z-text-primary font-semibold rounded-lg hover:bg-white/10 transition-all flex items-center gap-2"
+                        className="px-8 py-3.5 glass glass-hover text-slate-200 font-semibold rounded-lg transition-all flex items-center gap-2"
                     >
                         Start a Project
                     </Link>
-                </div>
+                </motion.div>
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-float">
-                <ChevronDown size={24} className="text-z-text-muted" />
-            </div>
+            <motion.div
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <ChevronDown size={24} className="text-slate-500" />
+            </motion.div>
         </section>
     );
 }

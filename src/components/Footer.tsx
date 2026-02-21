@@ -16,7 +16,7 @@ const footerLinks = {
         { label: "Blog", href: "/blog" },
         { label: "Contact", href: "/contact" },
     ],
-    "Services": [
+    Services: [
         { label: "App Development", href: "/services#app-dev" },
         { label: "Web Development", href: "/services#web-dev" },
         { label: "AI Automations", href: "/services#ai-auto" },
@@ -41,34 +41,34 @@ const socials = [
 
 export function Footer() {
     return (
-        <footer className="bg-z-bg-surface border-t border-z-border">
-            <div className="container py-16">
+        <footer className="bg-[#0a0f1a] border-t border-white/[0.04]">
+            <div className="container max-w-7xl mx-auto py-16">
                 {/* Top */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
                     {/* Brand */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="flex items-center gap-2 mb-4">
-                            <div className="relative w-10 h-10">
-                                <div className="absolute inset-0 bg-gradient-to-br from-z-blue to-z-teal rounded-lg" />
-                                <span className="absolute inset-0 flex items-center justify-center text-white font-display font-bold text-xl">
+                        <Link href="/" className="flex items-center gap-2.5 mb-5">
+                            <div className="relative w-9 h-9">
+                                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg" />
+                                <span className="absolute inset-0 flex items-center justify-center text-white font-bold text-lg">
                                     Z
                                 </span>
                             </div>
                             <div>
-                                <span className="font-display font-bold text-xl text-z-text-primary tracking-tight">
+                                <span className="font-bold text-lg text-white tracking-tight">
                                     ZILHAK
                                 </span>
-                                <span className="font-display font-light text-sm text-z-text-muted ml-1 tracking-widest">
+                                <span className="font-light text-sm text-slate-500 ml-1 tracking-widest">
                                     GLOBAL
                                 </span>
                             </div>
                         </Link>
-                        <p className="text-z-text-muted text-sm leading-relaxed max-w-sm mb-6">
+                        <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
                             FBR-registered AI & tech company building intelligent solutions
                             for businesses across Pakistan and beyond. Powered by DigiNext
                             Society — 150+ trained AI builders.
                         </p>
-                        <div className="flex gap-3">
+                        <div className="flex gap-2.5">
                             {socials.map((social) => (
                                 <a
                                     key={social.label}
@@ -76,9 +76,9 @@ export function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={social.label}
-                                    className="w-10 h-10 rounded-lg bg-z-bg-elevated border border-z-border flex items-center justify-center text-z-text-muted hover:text-z-blue hover:border-z-blue/30 transition-all"
+                                    className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-slate-500 hover:text-cyan-400 hover:border-cyan-400/20 transition-all duration-200"
                                 >
-                                    <social.icon size={18} />
+                                    <social.icon size={16} />
                                 </a>
                             ))}
                         </div>
@@ -87,15 +87,15 @@ export function Footer() {
                     {/* Links */}
                     {Object.entries(footerLinks).map(([title, links]) => (
                         <div key={title}>
-                            <h4 className="font-display font-semibold text-z-text-primary mb-4">
+                            <h4 className="font-semibold text-white tracking-tight mb-4 text-sm">
                                 {title}
                             </h4>
-                            <ul className="space-y-2">
+                            <ul className="space-y-2.5">
                                 {links.map((link) => (
                                     <li key={link.label}>
                                         <Link
                                             href={link.href}
-                                            className="text-sm text-z-text-muted hover:text-z-text-primary transition-colors"
+                                            className="text-sm text-slate-500 hover:text-slate-300 transition-colors"
                                         >
                                             {link.label}
                                         </Link>
@@ -107,8 +107,8 @@ export function Footer() {
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-z-border pt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-z-text-muted">
+                <div className="border-t border-white/[0.04] pt-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-600">
                         <div className="flex flex-col sm:flex-row items-center gap-4">
                             <div className="flex items-center gap-1.5">
                                 <MapPin size={14} />
