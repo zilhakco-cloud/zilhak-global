@@ -5,6 +5,7 @@ import { projects } from "@/lib/data";
 import { Github, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 const filters = [
     { label: "All", value: "all" },
@@ -45,8 +46,8 @@ export function WorkGrid() {
                             key={f.value}
                             onClick={() => setActiveFilter(f.value)}
                             className={`px-5 py-2 rounded-lg text-sm font-medium transition-all ${activeFilter === f.value
-                                    ? "bg-z-blue text-white shadow-lg shadow-z-blue/20"
-                                    : "glass text-z-text-muted hover:text-z-text-primary hover:bg-white/10"
+                                ? "bg-z-blue text-white shadow-lg shadow-z-blue/20"
+                                : "glass text-z-text-muted hover:text-z-text-primary hover:bg-white/10"
                                 }`}
                         >
                             {f.label}
@@ -66,19 +67,30 @@ export function WorkGrid() {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                 className={`group glass rounded-xl overflow-hidden relative ${project.size === "large"
-                                        ? "sm:col-span-2 sm:row-span-1"
-                                        : ""
+                                    ? "sm:col-span-2 sm:row-span-1"
+                                    : ""
                                     }`}
                             >
+                                {/* ✨ Magic UI Border Beam on featured cards */}
+                                {project.size === "large" && (
+                                    <BorderBeam
+                                        size={300}
+                                        duration={12}
+                                        colorFrom="#0A84FF"
+                                        colorTo="#00E5C3"
+                                        borderWidth={1.5}
+                                    />
+                                )}
+
                                 {/* Gradient Background */}
                                 <div
                                     className="absolute inset-0 opacity-30"
                                     style={{
                                         background: `linear-gradient(135deg, ${project.category === "ai"
-                                                ? "rgba(10,132,255,0.2), rgba(110,64,201,0.2)"
-                                                : project.category === "web"
-                                                    ? "rgba(0,229,195,0.2), rgba(10,132,255,0.1)"
-                                                    : "rgba(245,158,11,0.2), rgba(0,229,195,0.1)"
+                                            ? "rgba(10,132,255,0.2), rgba(110,64,201,0.2)"
+                                            : project.category === "web"
+                                                ? "rgba(0,229,195,0.2), rgba(10,132,255,0.1)"
+                                                : "rgba(245,158,11,0.2), rgba(0,229,195,0.1)"
                                             })`,
                                     }}
                                 />

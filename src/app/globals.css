@@ -221,6 +221,53 @@ pre {
   animation: marquee-reverse 30s linear infinite;
 }
 
+/* === SPOTLIGHT (Aceternity UI) === */
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
+/* === BORDER BEAM (Magic UI) === */
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam var(--duration) infinite linear;
+}
+
+/* === SHINE BORDER (Magic UI) === */
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.animate-shine {
+  animation: shine var(--shine-pulse-duration) infinite linear;
+}
+
 /* === REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
 

@@ -4,6 +4,7 @@ import { services } from "@/lib/data";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 const colorMap = {
     blue: "hover:border-z-blue/40 hover:shadow-z-blue/10",
@@ -17,6 +18,13 @@ const iconColorMap = {
     teal: "text-z-teal",
     purple: "text-z-purple",
     gold: "text-z-gold",
+};
+
+const shineColorMap = {
+    blue: ["#0A84FF", "#00E5C3"],
+    teal: ["#00E5C3", "#0A84FF"],
+    purple: ["#6E40C9", "#0A84FF"],
+    gold: ["#F59E0B", "#00E5C3"],
 };
 
 export function Services() {
@@ -50,29 +58,38 @@ export function Services() {
                                 ease: [0.16, 1, 0.3, 1],
                             }}
                         >
-                            <Link
-                                href={`/services#${service.id}`}
-                                className={`group block glass rounded-xl p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${colorMap[service.color]}`}
+                            {/* ✨ Magic UI Shine Border */}
+                            <ShineBorder
+                                borderRadius={12}
+                                borderWidth={1}
+                                duration={14 + i * 2}
+                                color={shineColorMap[service.color]}
+                                className="h-full"
                             >
-                                <div className={`w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4 ${iconColorMap[service.color]}`}>
-                                    <service.icon size={24} />
-                                </div>
-                                <h3 className="font-display font-semibold text-lg mb-2 group-hover:text-white transition-colors">
-                                    {service.title}
-                                </h3>
-                                <p className="text-sm text-z-text-muted mb-4 leading-relaxed">
-                                    {service.description}
-                                </p>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-xs text-z-text-muted font-mono">
-                                        {service.trust}
-                                    </span>
-                                    <ArrowUpRight
-                                        size={16}
-                                        className="text-z-text-muted group-hover:text-z-blue transition-colors"
-                                    />
-                                </div>
-                            </Link>
+                                <Link
+                                    href={`/services#${service.id}`}
+                                    className={`group block bg-z-bg-surface rounded-[11px] p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${colorMap[service.color]}`}
+                                >
+                                    <div className={`w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4 ${iconColorMap[service.color]}`}>
+                                        <service.icon size={24} />
+                                    </div>
+                                    <h3 className="font-display font-semibold text-lg mb-2 group-hover:text-white transition-colors">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-sm text-z-text-muted mb-4 leading-relaxed">
+                                        {service.description}
+                                    </p>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-xs text-z-text-muted font-mono">
+                                            {service.trust}
+                                        </span>
+                                        <ArrowUpRight
+                                            size={16}
+                                            className="text-z-text-muted group-hover:text-z-blue transition-colors"
+                                        />
+                                    </div>
+                                </Link>
+                            </ShineBorder>
                         </motion.div>
                     ))}
                 </div>

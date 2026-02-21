@@ -3,6 +3,7 @@
 import { useRef, useEffect, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const PARTICLE_COUNT = 600;
 
@@ -221,6 +222,16 @@ export function Hero() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* 3D Background */}
             {reducedMotion ? <StaticFallback /> : showCanvas ? <DynamicScene /> : <StaticFallback />}
+
+            {/* ✨ Aceternity Spotlight Effect */}
+            <Spotlight
+                className="-top-40 left-0 md:left-60 md:-top-20"
+                fill="#0A84FF"
+            />
+            <Spotlight
+                className="top-10 left-full -translate-x-[40%] md:-top-20"
+                fill="#00E5C3"
+            />
 
             {/* Gradient overlays */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-z-bg-base z-10" />

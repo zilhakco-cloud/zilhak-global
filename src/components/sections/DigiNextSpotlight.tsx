@@ -5,12 +5,16 @@ import { projects } from "@/lib/data";
 import { Github, ExternalLink, Users, GraduationCap, Sparkles, ArrowRight, type LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const digiProjects = projects.filter((p) => p.badge.includes("DigiNext"));
 
 export function DigiNextSpotlight() {
     return (
         <section className="section relative overflow-hidden" id="diginext-spotlight">
+            {/* ✨ Aceternity Background Beams */}
+            <BackgroundBeams className="opacity-40" />
+
             {/* Purple tinted background */}
             <div
                 className="absolute inset-0"
