@@ -1,0 +1,89 @@
+﻿
+> zilhak-global@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 5.3s
+  Running TypeScript ...
+node.exe : Failed 
+to compile.
+At line:1 char:1
++ & "C:\Program Fil
+es\nodejs/node.exe"
+ "C:\Program Files\
+nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo 
+             : No  
+  tSpecified: (F   
+ ailed to compi    
+le.:String) []    
+, RemoteExcept    
+ion
+    + FullyQualifi 
+   edErrorId : Na  
+  tiveCommandErr   
+ or
+ 
+
+./src/components/se
+ctions/Hero.tsx:144
+:18
+Type error: 
+Property 'args' is 
+missing in type '{ 
+attach: string; 
+count: number; 
+array: Float32Array
+<ArrayBuffer>; 
+itemSize: number; 
+}' but required in 
+type 'Mutable<Overw
+rite<Partial<Overwr
+ite<BufferAttribute
+, MathProps<BufferA
+ttribute> & ReactPr
+ops<BufferAttribute
+>>>, Omit<...>>>'.
+
+[0m [90m 142 
+|[39m         [33
+m<[39m[33mpoints
+[39m ref[33m=[39m
+{meshRef}[33m>[39
+m
+ [90m 143 |[39m  
+           [33m<[
+39m[33mbufferGeome
+try[39m[33m>[39m
+[31m[1m>[22m[39
+m[90m 144 |[39m  
+               [33
+m<[39m[33mbufferA
+ttribute[39m
+ [90m     |[39m  
+                [3
+1m[1m^[22m[39m
+ [90m 145 |[39m  
+                   
+attach[33m=[39m[
+32m"attributes-posi
+tion"[39m
+ [90m 146 |[39m  
+                   
+count[33m=[39m{[
+33mPARTICLE_COUNT[
+39m}
+ [90m 147 |[39m  
+                   
+array[33m=[39m{po
+sitions}[0m
+Next.js build 
+worker exited with 
+code: 1 and 
+signal: null

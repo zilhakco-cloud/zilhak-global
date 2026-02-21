@@ -1,0 +1,1378 @@
+PRODUCT REQUIREMENTS DOCUMENT
+
+Zilhak Global Associates  ×  DigiNext Society
+
+Spec-Driven Portfolio & Company Website
+
+
+
+Version: 2.0 — Full Spec-Driven Edition
+
+Status: Pre-Development (Claude Code Ready)
+
+Date: February 2026
+
+Methodology: Spec-Driven Development (SDD) with Claude Code Subagents
+
+
+
+DigiNext Society — Official Logo
+
+
+
+Digital & Next-Gen Skills Society  ·  Superior University Sargodha  ·  150–200 Students
+
+Zilhak Global Associates — Logo Concepts
+
+Three logo concepts are detailed in Section 04 of this document: 'Signal' (A), 'Axis' (B), and 'Nexus' (C). Each serves a distinct use case within the Zilhak brand ecosystem. See the attached SVG file for full visual rendering.
+
+
+
+
+
+
+
+01 — Executive Summary
+
+This document is the single source of truth for designing, building, and deploying the official portfolio and company website for Zilhak Global Associates and DigiNext Society. It follows the Spec-Driven Development (SDD) methodology — the same approach Anthropic uses internally — where this PRD feeds directly into Claude Code as a structured, machine-readable specification that agents execute task-by-task without ambiguity.
+
+Three interlocked goals drive every decision:
+
+Goal 1 — Establish Zilhak Global Associates as an investor-credible AI & tech company ready for Microsoft for Startups, Google for Startups, and NAVTTC
+
+Goal 2 — Present DigiNext Society as Zilhak's strategic innovation arm — 150+ trained students = real competitive moat
+
+Goal 3 — Showcase all projects with verified GitHub ownership, live demos, and team attribution under Zilhak's IP framework
+
+
+
+WHY SPEC-DRIVEN? Because the quality of AI-generated code depends almost entirely on the quality of the specification it receives. Addy Osmani (ex-Google) and Anthropic's own engineering team both confirm: a day of planning saves a week of debugging. This PRD IS that planning day.
+
+
+
+
+
+02 — Strategic Brand Architecture
+
+2.1 Parent–Child Entity Structure
+
+Decision (Final): Zilhak Global Associates is the PARENT company. DigiNext Society is its Innovation & Talent Division. Zilhak owns all IP. DigiNext produces the talent. This is the most investor-credible structure on earth — and it's exactly how Y Combinator companies present their research arms.
+
+
+
+Zilhak Global Associates (Parent)
+
+DigiNext Society (Division)
+
+FBR-Registered legal entity
+
+AI & Tech Society — Superior University Sargodha
+
+Commercial client-facing brand
+
+150–200 student talent pipeline
+
+IP owner of ALL projects
+
+R&D and innovation lab
+
+Investor & Microsoft pitch vehicle
+
+Recruits next-gen AI/app builders
+
+6 service verticals
+
+Student projects = Zilhak-credited work
+
+Main domain: zilhakglobal.com
+
+Section: zilhakglobal.com/diginext
+
+
+
+2.2 Domain & URL Strategy
+
+URL
+
+Purpose
+
+zilhakglobal.com
+
+Main company homepage
+
+zilhakglobal.com/diginext
+
+DigiNext Society section
+
+zilhakglobal.com/work
+
+Portfolio — all projects with GitHub links
+
+zilhakglobal.com/investors
+
+Investor-only page (not in nav, shared by URL)
+
+zilhakglobal.com/blog
+
+SEO content — thought leadership
+
+github.com/zilhak-global
+
+GitHub org — all IP registered here
+
+
+
+
+
+03 — World-Class UI/UX Principles
+
+This site must meet the standard of a Pentagram-designed product. These are not aesthetic preferences — they are engineering constraints that govern every component, every spacing decision, every interaction.
+
+3.1 The Ten Laws of Great Design — Applied to Zilhak
+
+Law 1 — Clarity Over Cleverness (Dieter Rams + Jony Ive)
+
+Every screen must communicate ONE thing immediately. If a visitor needs to 'figure out' what Zilhak does, the design has failed. The headline must state exactly what Zilhak does in 5–7 words. Jony Ive: 'It's very easy to be different, but very difficult to be better.'
+
+IMPLEMENTATION RULE: Hero headline must be decided and locked BEFORE any code is written. The headline is the most important element on the site — more important than the Three.js animation behind it.
+
+Law 2 — Invisible Design (Jared Spool)
+
+'Good design, when done well, should be invisible.' Users should never notice the interface — they should only experience the content and the brand. Every interaction that draws attention to itself (loading spinner, janky animation, layout shift) is a failure.
+
+Law 3 — Visual Hierarchy as Communication (Apple HIG)
+
+Every page must have a clear visual hierarchy: what the eye sees first (size, weight, contrast), what it sees second, what it scans last. Apple's HIG mandates: Primary element → Secondary element → Tertiary detail. Every component must follow this pattern.
+
+Law 4 — Reduce Cognitive Load (Jakob Nielsen)
+
+'Clear content, simple navigation and answers to customer questions have the biggest impact on business value. Advanced technology matters much less.' — Jakob Nielsen, Nielsen Norman Group. The navigation must be maximum 6 items. Each page must answer 1 question. Services page answers: 'What exactly do you build?'. Work page answers: 'What have you already built and for whom?'.
+
+Law 5 — Typography IS the Interface
+
+On a dark tech site, typography carries 80% of the personality. Font pairing rules: ONE display font (personality), ONE body font (readability), ONE monospace font (technical authority). These three fonts, used consistently, create the entire character of the brand.
+
+Law 6 — Motion Must Have Meaning (Apple HIG + WWDC25)
+
+Apple's 2025 design update (Liquid Glass) establishes: animations must reinforce content relationships, not decorate them. Every GSAP animation must answer: 'Why is this element moving? What does the motion communicate?' Random scroll animations for decoration are the enemy of quality.
+
+Law 7 — Mobile-First is Non-Negotiable
+
+57% of Pakistani internet users are on mobile (PTA 2025 data). The site must be designed mobile-first — every component designed for a 375px screen first, then expanded to desktop. Not the reverse. Mobile is not a 'version' — it IS the primary experience.
+
+Law 8 — Performance is a Design Choice
+
+A site that loads in 4 seconds is a poorly designed site. Lighthouse 90+ is a design requirement, not a developer concern. Every animation, every Three.js particle, every custom font must be justified against its performance cost.
+
+Law 9 — Accessibility is Not Optional
+
+WCAG 2.1 AA compliance minimum. All text must meet 4.5:1 contrast ratio on dark backgrounds. All interactive elements must have visible focus states. All images must have alt text. Custom cursor must degrade gracefully on touch devices. This isn't charity — it expands your audience and improves SEO.
+
+Law 10 — Specificity Builds Trust
+
+'We build AI solutions' builds zero trust. 'We built a WhatsApp chatbot for a Lahore retail chain that handled 3,000 customer queries/month' builds enormous trust. Every project card, every service description, every testimonial must be as SPECIFIC as possible. Vague = unbelievable.
+
+
+
+3.2 Design Token System — The Foundation
+
+All values below are design tokens — they must be defined FIRST in the codebase as CSS custom properties before any component is built. This is how Apple, Vercel, and Linear build consistent design systems.
+
+/* globals.css — Zilhak Design Token System */
+
+:root {
+
+  /* Colors */
+
+  --z-bg-base:       #0D1117;   /* Base background */
+
+  --z-bg-surface:    #0A0F1A;   /* Card surfaces */
+
+  --z-bg-elevated:   #111827;   /* Elevated UI */
+
+  --z-blue:          #0A84FF;   /* Primary action */
+
+  --z-teal:          #00E5C3;   /* Success / accent */
+
+  --z-purple:        #6E40C9;   /* DigiNext brand */
+
+  --z-gold:          #F59E0B;   /* Highlights */
+
+  --z-text-primary:  #E6EDF3;   /* Body text */
+
+  --z-text-muted:    #8B949E;   /* Muted / labels */
+
+  --z-border:        #1E2D3D;   /* Subtle borders */
+
+
+
+  /* Typography */
+
+  --font-display:    'Clash Display', sans-serif;
+
+  --font-body:       'Inter', sans-serif;
+
+  --font-mono:       'JetBrains Mono', monospace;
+
+
+
+  /* Spacing scale (8px base) */
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+
+  --space-4: 16px; --space-6: 24px; --space-8: 32px;
+
+  --space-12: 48px; --space-16: 64px; --space-24: 96px;
+
+
+
+  /* Border radius */
+
+  --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
+
+
+
+  /* Animation */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --duration-fast: 200ms;
+
+  --duration-base: 350ms;
+
+  --duration-slow: 600ms;
+
+}
+
+
+
+
+
+04 — Zilhak Logo System — Three Concepts
+
+After deep research into Pentagram, Wolff Olins, Ramotion, Collins, IBM, Vercel, and OpenAI brand identities, three distinct logo concepts were developed. All three share the Z identity — the mark carries your name's identity. One is the master logo; the others are contextual variants of the same brand system.
+
+
+
+CONCEPT A — "SIGNAL"  —  Electric Precision
+
+USE CASE: Investor decks · Microsoft pitch · LinkedIn banner · Email signature
+
+Philosophy: IBM meets DeepMind. The Z is constructed from raw signal lines with glowing endpoint nodes — like a circuit trace or waveform. Zero decoration. Top bar (blue) + diagonal slash + bottom bar (teal) connected by glowing nodes. Extension dashes trail outward: "signal beyond the mark." This tells investors: we are technical, precise, and serious. Colors: #0A84FF → #00C2FF → #00E5C3. WHEN TO USE: Every investor-facing document, pitch deck cover, LinkedIn profile, business card front.
+
+
+
+CONCEPT B — "AXIS"  —  Geometric Sovereignty
+
+USE CASE: Master logo · Business cards · Legal documents · FBR filings · Letterhead
+
+Philosophy: McKinsey meets Palantir. A perfect diamond with the Z carved as negative space inside — the same hidden-meaning technique FedEx used with their famous arrow and Carrefour with their hidden C. The mark rewards second glances. Diamond vertices have white dot accents. Wordmark uses heavy weight (ZILHAK) + ultralight contrast (GLOBAL ASSOCIATES) + diamond center hairline rule. This is the 20-year logo — the one that still works when Zilhak is a unicorn. WHEN TO USE: This is the PRIMARY master logo for all official, permanent, and legal contexts.
+
+
+
+CONCEPT C — "NEXUS"  —  Kinetic Intelligence
+
+USE CASE: Website hero · App icon · Social media · AI product marketing · Animations
+
+Philosophy: Vercel meets OpenAI. Four glowing network nodes (purple → gold) connected by gradient paths forming the Z shape. Each node is labeled: BUILD · AUTOMATE · SCALE · INNOVATE — your four service pillars. The wordmark splits: Z is heavy purple (glowing), ILHAK is ultralight white — making Z the visual anchor. This logo is natively animation-ready: nodes can pulse, paths can animate along their gradients, the whole mark can breathe on the website hero. WHEN TO USE: Website, app store icon, social media profiles, AI product contexts, presentations.
+
+
+
+4.1 Logo Usage Rules — Non-Negotiable
+
+Context
+
+Logo to Use
+
+DO NOT
+
+Microsoft / investor pitch deck
+
+Concept A (Signal)
+
+Use Nexus — too playful for formal contexts
+
+Business cards front
+
+Concept B (Axis)
+
+Use Signal — card needs timeless master logo
+
+Website hero animation
+
+Concept C (Nexus)
+
+Use Axis — too static, wastes animation potential
+
+Email signature
+
+Concept A or B
+
+Use Nexus — too complex at small email size
+
+App store icon
+
+Concept C (node Z only)
+
+Show full wordmark — too small for wordmark
+
+FBR / legal documents
+
+Concept B (Axis)
+
+Any other concept — B is the official master
+
+DigiNext materials
+
+DigiNext logo + Zilhak B (small)
+
+Remove Zilhak credit from DigiNext materials
+
+Social media avatar
+
+Concept C (node mark only)
+
+Use full lockup — avatar is too small
+
+
+
+4.2 Forbidden Logo Practices
+
+Never stretch or distort the logo proportionally
+
+Never place the logo on a background with insufficient contrast
+
+Never use Concept C in investor decks or legal filings
+
+Never recreate the logo in Word or PowerPoint — use the provided SVG/PNG files
+
+Never mix the three concepts in the same document
+
+
+
+
+
+05 — Spec-Driven Development with Claude Code
+
+This section is the technical core of the PRD. It transforms everything above into machine-readable specifications that Claude Code can execute directly. Based on research from Addy Osmani (ex-Google), the Claude Code Best Practices guide from Anthropic, and the GitHub Spec-Kit methodology.
+
+5.1 Why Spec-Driven Development?
+
+Anthropic reports 90% of their own code is now written with Claude Code. The teams that get the best results follow ONE pattern: Intent → Spec → Plan → Tasks → Execute. Teams that skip to 'just build it' get house-of-cards code — fragile outputs that collapse under scrutiny. This PRD IS the Spec phase.
+
+
+
+The Four Phases of SDD (GitHub Spec-Kit)
+
+Phase
+
+Who Does It
+
+Output
+
+Gate Before Next
+
+1. SPECIFY
+
+You + Claude
+
+SPEC.md — user journeys, success criteria, what & why
+
+Validate spec matches your vision
+
+2. PLAN
+
+Claude (Plan Mode)
+
+PLAN.md — tech stack, architecture, component map
+
+Review for constraints & edge cases
+
+3. TASKS
+
+Claude subagents
+
+TASKS.md — isolated, testable work items with acceptance criteria
+
+Confirm each task is independently verifiable
+
+4. IMPLEMENT
+
+Claude Code agents
+
+Committed code, passing tests, deployed site
+
+QA against every acceptance criterion
+
+
+
+5.2 The CLAUDE.md File — Your Persistent AI Brain
+
+CLAUDE.md is the most important file in the repository after the code itself. Claude Code reads it at the start of every session. It holds everything Claude needs to build YOUR project in YOUR way — without you repeating yourself every conversation.
+
+# CLAUDE.md — Zilhak Global Associates Website
+
+## Project Overview
+
+Portfolio + company site for Zilhak Global Associates (FBR-registered AI tech
+
+company, Pakistan) and DigiNext Society (AI society, Superior University Sargodha).
+
+Target: Microsoft for Startups eligibility, client lead gen, DigiNext recruitment.
+
+
+
+## Tech Stack
+
+- Framework: Next.js 14 (App Router) + TypeScript strict mode
+
+- Styling: Tailwind CSS + CSS custom properties (design tokens in globals.css)
+
+- 3D/Anim: Three.js (r3f) for hero, GSAP + ScrollTrigger for scroll animations
+
+- Smooth scroll: Lenis
+
+- CMS: Sanity.io (blog + projects)
+
+- Forms: Resend (email), react-hook-form + zod (validation)
+
+- Deploy: Vercel (auto-deploy from main branch)
+
+- Analytics: Vercel Analytics + Google Search Console
+
+
+
+## Commands
+
+- dev:   npm run dev          # port 3000
+
+- build: npm run build
+
+- test:  npm run test         # Vitest unit tests
+
+- e2e:   npm run test:e2e     # Playwright
+
+- lint:  npm run lint         # ESLint + Prettier
+
+- types: npm run type-check   # tsc --noEmit
+
+
+
+## Project Structure
+
+src/
+
+├── app/              # Next.js App Router pages
+
+├── components/
+
+│   ├── ui/           # Reusable design system components
+
+│   ├── sections/     # Page sections (Hero, Services, Work...)
+
+│   └── three/        # Three.js / R3F components
+
+├── lib/              # Utilities, hooks, animations
+
+├── styles/           # globals.css (design tokens)
+
+└── sanity/           # CMS schema + queries
+
+
+
+## Code Rules (NEVER break these)
+
+- TypeScript strict: no `any` types, no `@ts-ignore`
+
+- Named exports only (no default exports except pages)
+
+- Tailwind only for styling (no inline styles, no CSS modules)
+
+- Every animation: check prefers-reduced-motion first
+
+- Every image: next/image with proper alt text
+
+- Mobile-first breakpoints: sm(640) md(768) lg(1024) xl(1280)
+
+
+
+## MUST DO
+
+- Always verify mobile layout before committing any component
+
+- Always run type-check after adding new types
+
+- Always add Sanity schema before adding CMS-powered sections
+
+- Always use design tokens from globals.css (never hardcode colours)
+
+
+
+## NEVER DO
+
+- Never commit .env files
+
+- Never use `any` TypeScript type
+
+- Never use inline styles (use Tailwind classes)
+
+- Never hardcode colour hex values in components
+
+- Never add dependencies without checking bundle size impact
+
+- Never build desktop layout before mobile is approved
+
+
+
+## Design System
+
+- See src/styles/globals.css for all design tokens
+
+- Component library: see src/components/ui/
+
+- Logo files: public/logos/ (all three concepts in SVG + PNG)
+
+- Brand colours: --z-blue (#0A84FF) --z-teal (#00E5C3) --z-purple (#6E40C9)
+
+
+
+## Boundaries
+
+- Ask before: adding new npm dependencies, changing file structure
+
+- Ask before: modifying Sanity schema (affects CMS)
+
+- Never touch: public/logos/ originals (create copies for edits)
+
+
+
+5.3 Subagent Architecture — Divide and Conquer
+
+Following the SDD pattern from alexop.dev and Anthropic's agent orchestration guide: each major feature is handled by a specialized subagent with its OWN context window. The main orchestrator agent coordinates them. This prevents context pollution and 'agent amnesia'.
+
+Subagent
+
+Responsibility
+
+Tools
+
+nextjs-architect
+
+App Router structure, layouts, metadata, SEO
+
+Claude Code + filesystem
+
+design-system-builder
+
+Design tokens, UI components, Tailwind config
+
+Claude Code + Figma MCP
+
+three-animator
+
+Three.js hero, particle system, GSAP ScrollTrigger
+
+Claude Code + browser preview
+
+sanity-cms-agent
+
+CMS schema, queries, project/blog data
+
+Claude Code + Sanity MCP
+
+seo-agent
+
+Metadata, sitemap, robots.txt, structured data
+
+Claude Code + search console
+
+performance-agent
+
+Bundle analysis, image optimization, Lighthouse
+
+Claude Code + Vercel MCP
+
+qa-agent
+
+Vitest tests, Playwright e2e, accessibility audit
+
+Claude Code + browser
+
+
+
+5.4 Task Breakdown — Atomic Spec Cards
+
+Each task below is designed to be handed to a single Claude Code subagent. Tasks are isolated, independently testable, and have explicit acceptance criteria. This is the GitHub Spec-Kit four-phase pattern applied to the Zilhak website.
+
+
+
+TASK 01  Project Setup & Design Token System
+
+Agent: nextjs-architect
+
+Acceptance Criteria:
+
+Next.js 14 App Router initialised with TypeScript strict mode
+
+Tailwind configured with custom colours matching design tokens
+
+globals.css contains all --z-* CSS custom properties
+
+ESLint + Prettier + Husky pre-commit hooks configured
+
+Vercel deployment connected and auto-deploying from main
+
+Lenis smooth scroll initialised globally
+
+Files: src/styles/globals.css  ·  tailwind.config.ts  ·  next.config.ts  ·  .eslintrc.json
+
+
+
+TASK 02  Three.js Particle Hero Section
+
+Agent: three-animator
+
+Acceptance Criteria:
+
+Full-viewport canvas with animated particle field (500 particles min)
+
+Particles form subtle Z shape on idle, scatter on mouse move
+
+FPS locked to 60 — drops to static image if GPU can't handle
+
+prefers-reduced-motion: all motion disabled, static gradient shown
+
+Hero loads in under 2 seconds on 4G connection
+
+Headline and CTAs render ABOVE the canvas with correct z-index
+
+Files: src/components/three/ParticleHero.tsx  ·  src/app/page.tsx
+
+
+
+TASK 03  Services Section — Glassmorphism Cards
+
+Agent: design-system-builder
+
+Acceptance Criteria:
+
+6 service cards in responsive CSS Grid (3-col desktop, 2-col tablet, 1-col mobile)
+
+Each card: icon (Lucide or custom SVG), title, 1-line desc, 'Learn More' link
+
+Glassmorphism: backdrop-filter: blur(12px), rgba(255,255,255,0.04) bg, 1px border
+
+GSAP stagger animation: cards enter with 80ms delay between each
+
+Hover: card lifts (translateY -4px), border colour brightens to --z-blue
+
+All hover effects disabled if prefers-reduced-motion is set
+
+Files: src/components/sections/Services.tsx  ·  src/components/ui/ServiceCard.tsx
+
+
+
+TASK 04  Work / Projects Bento Grid
+
+Agent: design-system-builder + sanity-cms-agent
+
+Acceptance Criteria:
+
+Bento grid layout: 2 large + 4 small cards on desktop, stacked on mobile
+
+Filter tabs: All / App / Web / AI / DigiNext — client-side filtering with Framer Motion
+
+Each card: preview image, project name, tech stack tags, ownership badge, GitHub link, live link
+
+Ownership badge: 'Built by Zilhak Global' or 'Built via DigiNext × Zilhak'
+
+Data pulled from Sanity CMS (not hardcoded)
+
+GitHub links verified to open correct repos
+
+Files: src/components/sections/WorkGrid.tsx  ·  src/sanity/schemas/project.ts
+
+
+
+TASK 05  DigiNext Society Section
+
+Agent: design-system-builder
+
+Acceptance Criteria:
+
+Visually distinct section: purple-tinted background (--z-purple at 8% opacity)
+
+Stats row: 150+ Students, Superior University Sargodha, AI Society, Est. 2024
+
+3 featured DigiNext projects with 'Built via DigiNext × Zilhak' badge
+
+'Join DigiNext' CTA links to /diginext page
+
+Section is animated: stats count up on scroll-enter
+
+DigiNext logo displays correctly on purple background
+
+Files: src/components/sections/DigiNextSpotlight.tsx
+
+
+
+TASK 06  Contact Form + Investor CTA
+
+Agent: nextjs-architect + seo-agent
+
+Acceptance Criteria:
+
+Contact form: Name, Email, Type (Client/Investor/Student/Other), Message
+
+Validation: Zod schema, react-hook-form, inline error messages
+
+Submission: Resend API, confirmation email sent to sender
+
+Form accessible: all inputs labelled, error states announced to screen readers
+
+Investor section: pitch deck PDF downloadable, Calendly link
+
+No sensitive data exposed in client bundle
+
+Files: src/app/contact/page.tsx  ·  src/app/api/contact/route.ts
+
+
+
+TASK 07  SEO, Performance & Accessibility
+
+Agent: seo-agent + performance-agent + qa-agent
+
+Acceptance Criteria:
+
+Lighthouse Performance ≥ 90 on mobile and desktop
+
+All pages have unique title, description, OG image via Next.js Metadata API
+
+Sitemap.xml and robots.txt auto-generated
+
+All images use next/image with proper alt text and lazy loading
+
+All interactive elements have visible :focus-visible styles
+
+WCAG 2.1 AA: all text meets 4.5:1 contrast ratio
+
+Structured data (JSON-LD) for Organization and LocalBusiness
+
+Files: src/app/sitemap.ts  ·  src/app/robots.ts  ·  src/lib/metadata.ts
+
+
+
+
+
+06 — Page-by-Page Specification
+
+6.1 Homepage — The Manifesto
+
+The homepage is a single-scroll narrative. Each section has ONE job. The visitor should arrive knowing nothing about Zilhak and leave with a complete picture of who you are, what you build, and why they should care.
+
+Section
+
+Single Job + Key Elements
+
+§1 Hero
+
+HOOK: 7-word headline + Two CTAs + Three.js particle canvas + scroll indicator
+
+§2 Trust Bar
+
+CREDIBILITY: Stats (150+ students, FBR reg, 6 services) + partner logo strip
+
+§3 Services
+
+OFFER: 6 glassmorphism service cards + hover state + stagger animation
+
+§4 Work Showcase
+
+PROOF: Bento grid of 6–8 real projects + filter tabs + ownership badges
+
+§5 DigiNext Spotlight
+
+PIPELINE: Purple section, DigiNext stats, 3 featured projects, Join CTA
+
+§6 Process
+
+PROCESS: 4-step horizontal timeline (Discover→Design→Build→Scale)
+
+§7 Testimonials
+
+SOCIAL PROOF: Dual-direction marquee of testimonials + client logos
+
+§8 Investor CTA
+
+CLOSE: Full-width CTA + pitch deck download + Calendly link
+
+§9 Footer
+
+NAVIGATION: Links + social + FBR number + copyright + address
+
+
+
+6.2 Services Page — Six Verticals
+
+Service
+
+Hero Headline
+
+Trust Signal
+
+App Development
+
+From idea to App Store in 90 days
+
+Show 1 shipped app with download count
+
+Web Development
+
+Websites that convert visitors into clients
+
+Show Core Web Vitals scores
+
+SEO & Growth
+
+Organic traffic that compounds while you sleep
+
+Show % traffic growth case study
+
+AI Automations
+
+Replace 10 hours of work with one AI workflow
+
+Show hours saved metric
+
+Agentic AI Systems
+
+AI that thinks, plans, and acts autonomously
+
+Show agent decision diagram
+
+AI Chatbots
+
+Your smartest employee — available 24/7
+
+Show conversation volume handled
+
+
+
+6.3 Work / Projects Page — Bento Grid Spec
+
+MINIMUM 6 projects at launch — do not launch with fewer
+
+Each project requires: name, 1-line description, preview image (1200×800px), tech tags, GitHub repo URL, live demo URL (or 'In Development'), ownership badge, team credits
+
+Filter tabs: All (default) | App Dev | Web Dev | AI/Automation | DigiNext
+
+Project cards have 2 sizes: large (1×2 grid units) and small (1×1 grid unit)
+
+Each card shows IP ownership badge — this is a legal and trust signal, not decoration
+
+GitHub links must open to public repos under github.com/zilhak-global org
+
+6.4 DigiNext Page — Full Society Showcase
+
+Hero: 'Where Pakistan's AI Generation is Born' — cinematic full-width
+
+About: Superior University Sargodha context, founding story, student count
+
+Mission: 3 pillars — LEARN (workshops), BUILD (projects), LAUNCH (startups)
+
+Leadership: Society President, VP, Department heads with photo + LinkedIn
+
+Projects: DigiNext-origin projects labeled 'Built via DigiNext × Zilhak'
+
+Events: Hackathons, workshops, seminars with photos and dates
+
+Join Section: Application form or link to join DigiNext cohort
+
+Explicit statement: 'DigiNext is the innovation arm of Zilhak Global Associates'
+
+
+
+
+
+07 — Animation & Interaction Specification
+
+Rule from Anthropic's design research: Animation must serve communication, not decorate it. Every animation in this spec has an explicit PURPOSE — what it communicates to the user. Any animation without a stated purpose should be removed.
+
+7.1 Animation Inventory
+
+Animation
+
+Library
+
+Purpose
+
+reduced-motion fallback
+
+Hero particle field
+
+Three.js
+
+Signals: we build AI; we work with data
+
+Static gradient mesh
+
+Text word reveals
+
+GSAP SplitText
+
+Creates reading cadence, builds anticipation
+
+Text visible immediately
+
+Service card stagger
+
+GSAP ScrollTrigger
+
+Communicates: 6 distinct services, not one blob
+
+Cards visible immediately
+
+Stats countup
+
+GSAP ScrollTrigger
+
+Makes numbers feel earned, not claimed
+
+Static numbers shown
+
+Bento grid hover lift
+
+CSS transform
+
+Signals: these are interactive; click me
+
+Border colour change only
+
+Marquee trust bar
+
+CSS animation
+
+Implies: many partners, ongoing activity
+
+Static logo row
+
+Page transitions
+
+Framer Motion
+
+Creates continuity between pages
+
+Instant page load
+
+Custom cursor
+
+JS mousemove
+
+Signals: this is a premium product
+
+Default cursor on touch
+
+GSAP scroll progress
+
+ScrollTrigger
+
+Orients user within long pages
+
+None needed
+
+
+
+7.2 Performance Budgets for Animation
+
+Asset
+
+Maximum Size
+
+Load Strategy
+
+Three.js hero canvas
+
+< 200KB JS bundle
+
+Dynamic import, loads after hero text
+
+GSAP + ScrollTrigger
+
+< 50KB gzipped
+
+Loaded with main bundle
+
+Lenis smooth scroll
+
+< 5KB
+
+Loaded synchronously
+
+Custom font files
+
+< 100KB total
+
+Subset to used characters only (latin+urdu)
+
+Hero section total
+
+< 500KB all resources
+
+Largest Contentful Paint < 2.5s
+
+
+
+
+
+08 — SEO & Content Strategy
+
+8.1 Primary Keyword Targets
+
+Keyword Cluster
+
+Intent
+
+AI development company Pakistan
+
+Investor / partner discovery
+
+SEO agency Pakistan
+
+Client lead generation
+
+app development Sargodha
+
+Local client discovery
+
+AI chatbot development Pakistan
+
+Enterprise chatbot buyer
+
+agentic AI company Pakistan
+
+Investor / tech buyer
+
+DigiNext Society Superior University
+
+Student recruitment
+
+Zilhak Global Associates
+
+Branded search — own it completely
+
+startup tech company Pakistan
+
+General credibility search
+
+
+
+8.2 Content Calendar — First 90 Days
+
+Week
+
+Blog Post Title
+
+Target Audience
+
+Week 1
+
+What is Agentic AI and Why Pakistani Startups Need It Now
+
+Investors + tech buyers
+
+Week 2
+
+How DigiNext Society is Building Pakistan's Next AI Generation
+
+Students + faculty + press
+
+Week 3
+
+The 5 AI Automations Every Pakistani SME Should Deploy in 2026
+
+Local business clients
+
+Week 4
+
+How to Apply for Microsoft for Startups as a Pakistani Company
+
+Startup community — builds authority
+
+Week 6
+
+We Built a WhatsApp Chatbot for [Client] — Here's What Happened
+
+Case study — client leads
+
+Week 8
+
+App Development Cost in Pakistan: The Honest Guide for 2026
+
+High-intent client leads
+
+Week 10
+
+SEO for Pakistani Businesses: What Actually Works in 2026
+
+Local SEO clients
+
+Week 12
+
+Zilhak 6-Month Report: What We've Built, Who We've Served
+
+Brand authority + transparency
+
+
+
+
+
+09 — Investor & Microsoft for Startups Strategy
+
+The website must function as a silent investor relations officer. Every page contributes to the investor narrative. The /investors page is the explicit pitch. The rest of the site is the proof.
+
+9.1 Microsoft for Startups Founders Hub — Checklist
+
+Microsoft for Startups evaluates: legal entity, founding team, scalable solution, traction. Your site must evidence all four:
+
+FBR registration number visible in footer and /about page: Legal Entity
+
+Founder photo, bio, LinkedIn on /team or /about: Founding Team
+
+AI services + agentic systems clearly positioned as scalable: Scalable Solution
+
+Project count, student count, client logos, GitHub commit history: Traction
+
+Next.js on Vercel = Microsoft Azure adjacent. Note this in pitch: Tech Stack
+
+Downloadable from /investors — updated quarterly: One-Pager
+
+9.2 The /investors Page — Structure
+
+Hero: 'Building AI Infrastructure for Pakistan and the World'
+
+Problem statement: AI adoption gap in Pakistani SMEs + talent gap
+
+Solution: Zilhak bridges both — builds tools AND grows talent via DigiNext
+
+Traction metrics: Projects, students, services, GitHub activity
+
+Team: Founder + DigiNext leadership
+
+Market size: Pakistani SME market + South Asian AI market
+
+Ask: What you are looking for (program membership, investment, partnership)
+
+Downloads: Pitch deck PDF, FBR certificate scan, company overview
+
+CTA: Schedule a call (Calendly), Send email (pre-filled)
+
+
+
+
+
+10 — Launch Timeline
+
+Phase
+
+Duration
+
+Milestone
+
+Gate Criterion
+
+Phase 0: Decisions
+
+1 week
+
+Answer all open questions (Section 11)
+
+This PRD confirmed, logo chosen, headline written
+
+Phase 1: Design
+
+2 weeks
+
+Figma mockups for all 8 pages
+
+Mobile + desktop reviewed, approved before code
+
+Phase 2: Setup
+
+3 days
+
+Next.js + Tailwind + GSAP + Sanity + Vercel
+
+CLAUDE.md committed, deploy pipeline live
+
+Phase 3: Core Pages
+
+3 weeks
+
+Homepage, Services, Work, DigiNext
+
+All sections responsive, animated, QA passed
+
+Phase 4: Inner Pages
+
+1 week
+
+About, Team, Blog, Contact, Investors
+
+All forms working, CMS connected
+
+Phase 5: Performance
+
+3 days
+
+Lighthouse 90+, SEO metadata, accessibility
+
+Lighthouse scores validated on Vercel preview
+
+Phase 6: Launch
+
+2 days
+
+DNS, domain, final QA, Microsoft application
+
+Site live on zilhakglobal.com
+
+Phase 7: Growth
+
+Ongoing
+
+Blog posts, new projects, investor outreach
+
+Weekly — new content published, metrics tracked
+
+
+
+
+
+
+
+11 — Open Questions — Must Decide Before Build
+
+Development CANNOT begin until all Critical questions below are answered. These are not design preferences — they are architectural decisions that affect every downstream choice.
+
+
+
+#
+
+Question
+
+Priority
+
+Impact
+
+Q1
+
+Which logo concept is the master? (A, B, or C)
+
+CRITICAL
+
+Affects every page header, all brand assets
+
+Q2
+
+Final hero headline — 5-7 words, approved?
+
+CRITICAL
+
+Most important copy on the entire site
+
+Q3
+
+How many real projects can be shown at launch?
+
+CRITICAL
+
+Can't launch Work page without 6 real projects
+
+Q4
+
+Build yourself or hire a developer?
+
+CRITICAL
+
+Determines timeline: 2 weeks vs 12 weeks
+
+Q5
+
+What is the Zilhak GitHub org URL?
+
+HIGH
+
+All project links must point here
+
+Q6
+
+DigiNext founding date and current cohort number?
+
+HIGH
+
+Affects all 'About DigiNext' copy
+
+Q7
+
+Any existing clients who can give testimonials?
+
+HIGH
+
+Testimonials section content
+
+Q8
+
+Domain registered? Hosting confirmed on Vercel?
+
+HIGH
+
+Launch gate — needed for DNS
+
+Q9
+
+Sanity CMS preferred or a different headless CMS?
+
+MEDIUM
+
+Affects cms-agent task card
+
+Q10
+
+Founder photo + LinkedIn URL for team section?
+
+MEDIUM
+
+Affects /about and /team pages
+
+
+
+
+
+
+
+12 — Final Principles & Closing Statement
+
+The three things that separate a 9/10 portfolio from a 5/10 portfolio: (1) Real work with real links. (2) One unforgettable headline. (3) A design system that's been thought through before a single component is coded. This PRD gives you all three. Now execute.
+
+
+
+On Code Quality: Your website IS your portfolio as a tech company. If it has layout shifts, slow load times, or broken mobile — it tells every investor and client that your AI products have the same quality. Treat it as a product, not a marketing site.
+
+
+
+On Content: Specificity is your superpower. 'We build AI' is worthless. 'We built an agentic AI system that reduced a Lahore e-commerce company's customer service workload by 40%' is priceless. Get specific. Be proud of what you've built.
+
+
+
+On DigiNext: 150+ students is not a society stat. It's a talent moat. When you pitch to Microsoft, you're not pitching a 1-person company — you're pitching a company with a built-in hiring pipeline, R&D arm, and proof that you can scale. Lead with that.
+
+
+
+On Spec-Driven Development: Every task card in Section 05 is a complete Claude Code prompt. Copy it. Add @docs/CLAUDE.md to the context. Tell Claude Code: 'implement task 03 from the PRD'. It will execute the spec without hallucinating features you didn't ask for.
+
+Built in Pakistan. Architected for the world.
+
+— Zilhak Global Associates × DigiNext Society — PRD v2.0
+
+Researched from: Addy Osmani / ex-Google · Anthropic Engineering · GitHub Spec-Kit · Pentagram · Wolff Olins · Apple HIG · Nielsen Norman Group · landing.love · Awwwards
+

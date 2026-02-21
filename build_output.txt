@@ -1,0 +1,33 @@
+﻿
+> zilhak-global@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 7.8s
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/13) ...
+  Generating static pages using 15 workers (3/13) 
+  Generating static pages using 15 workers (6/13) 
+  Generating static pages using 15 workers (9/13) 
+Γ£ô Generating static pages using 15 workers (13/13) in 1170.6ms
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /about
+Γö£ Γùï /blog
+Γö£ Γùï /contact
+Γö£ Γùï /diginext
+Γö£ Γùï /investors
+Γö£ Γùï /robots.txt
+Γö£ Γùï /services
+Γö£ Γùï /sitemap.xml
+Γöö Γùï /work
+
+
+Γùï  (Static)  prerendered as static content
+
