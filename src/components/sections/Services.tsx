@@ -48,18 +48,38 @@ export function Services() {
                 </motion.div>
 
                 {/* Bento Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     {services.map((service, i) => {
                         const accent = accentMap[service.color];
+
+                        // Flashlight + 3D Tilt logic
+                        const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                            const rect = e.currentTarget.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+
+                            // Calculate rotation (max 10deg)
+                            const rotateY = ((x / rect.width) - 0.5) * 15;
+                            const rotateX = ((y / rect.height) - 0.5) * -15;
+
+                            e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                            e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+                            e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                        };
+
+                        const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                            e.currentTarget.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                        };
+
                         return (
                             <motion.div
                                 key={service.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.98, filter: "blur(10px)", y: 20 }}
+                                whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)", y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{
-                                    duration: 0.5,
-                                    delay: i * 0.08,
+                                    duration: 0.8,
+                                    delay: i * 0.1,
                                     ease: [0.16, 1, 0.3, 1],
                                 }}
                                 className={bentoSpan[i] || ""}
@@ -73,25 +93,30 @@ export function Services() {
                                 >
                                     <Link
                                         href={`/services#${service.id}`}
-                                        className={`group block bg-white/[0.03] backdrop-blur-lg rounded-[15px] p-9 md:p-12 h-full transition-all duration-300 hover:bg-white/[0.06] ${accent.border}`}
+                                        onMouseMove={handleMouseMove}
+                                        onMouseLeave={handleMouseLeave}
+                                        className={`group block bg-white/[0.03] backdrop-blur-lg rounded-[15px] p-12 md:p-16 h-full transition-all duration-500 hover:bg-white/[0.06] ${accent.border} flashlight-card`}
+                                        style={{ transition: "transform 0.1s ease-out, background 0.3s ease" }}
                                     >
-                                        <div className={`w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 ${accent.icon}`}>
+                                        <div className={`w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-8 shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 ${accent.icon}`}>
                                             <service.icon size={28} />
                                         </div>
-                                        <h3 className="font-bold tracking-tight text-lg text-white mb-2 group-hover:text-white transition-colors">
+                                        <h3 className="font-bold tracking-tight text-2xl text-white mb-4 group-hover:text-white transition-colors">
                                             {service.title}
                                         </h3>
-                                        <p className="text-sm text-slate-400 mb-5 leading-relaxed">
+                                        <p className="text-base text-slate-400 mb-8 leading-relaxed">
                                             {service.description}
                                         </p>
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-xs text-slate-500 font-mono">
+                                        <div className="flex items-center justify-between border-t border-white/5 pt-6">
+                                            <span className="text-xs text-slate-500 font-mono tracking-widest uppercase">
                                                 {service.trust}
                                             </span>
-                                            <ArrowUpRight
-                                                size={16}
-                                                className="text-slate-600 group-hover:text-cyan-400 transition-colors"
-                                            />
+                                            <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-400/50 transition-colors">
+                                                <ArrowUpRight
+                                                    size={18}
+                                                    className="text-slate-600 group-hover:text-cyan-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                                />
+                                            </div>
                                         </div>
                                     </Link>
                                 </ShineBorder>

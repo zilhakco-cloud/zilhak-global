@@ -189,21 +189,21 @@ export function Hero() {
             {/* Content */}
             <div className="relative z-20 max-w-5xl mx-auto text-center px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-slate-400 mb-8">
+                    <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass border-white/10 text-sm text-slate-400 mb-10 shadow-xl">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-glow" />
                         FBR-Registered AI & Tech Company
                     </div>
                 </motion.div>
 
                 <motion.h1
-                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 gradient-text-hero"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 gradient-text-hero leading-[1.05]"
+                    initial={{ opacity: 0, y: 30, filter: "blur(15px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 1.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
                     AI That Thinks.
                     <br />
@@ -211,10 +211,10 @@ export function Hero() {
                 </motion.h1>
 
                 <motion.p
-                    className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-lg sm:text-2xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
                     We build agentic AI systems, ship production apps, and grow businesses
                     with intelligent automations — backed by 150+ trained builders.
@@ -304,7 +304,7 @@ function PremiumButton({
                 <div className={`absolute inset-0 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500 ${variant === "primary" ? "bg-cyan-400/10" : "bg-blue-600/10"}`} />
 
                 <div className={cn(
-                    "relative flex items-center justify-center gap-3 px-12 py-4 rounded-full font-bold transition-all duration-300 active:scale-95 no-underline border whitespace-nowrap",
+                    "relative flex items-center justify-center gap-3 px-16 py-5 rounded-full font-bold transition-all duration-300 active:scale-95 no-underline border whitespace-nowrap min-w-[280px]",
                     variant === "primary"
                         ? "bg-white text-slate-900 border-white shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]"
                         : "glass glass-hover text-white border-white/10 hover:border-white/30"

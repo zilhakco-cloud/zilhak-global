@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 const links = [
     { href: "/", label: "Home" },
@@ -15,21 +15,27 @@ const links = [
 ];
 
 export function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const { scrollY } = useScroll();
 
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 50);
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+    // Elastic header transformations
+    const headerPadding = useTransform(scrollY, [0, 80], ["20px", "12px"]);
+    const headerBgOpacity = useTransform(scrollY, [0, 80], [0, 0.8]);
+    const headerBlur = useTransform(scrollY, [0, 80], ["blur(0px)", "blur(20px)"]);
+    const headerBorder = useTransform(scrollY, [0, 80], ["rgba(255,255,255,0)", "rgba(255,255,255,0.06)"]);
 
     return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                ? "bg-[#030712]/80 backdrop-blur-xl border-b border-white/[0.06] py-3 shadow-lg shadow-black/30"
-                : "py-5 bg-transparent"
-                }`}
+        <motion.header
+            style={{
+                paddingTop: headerPadding,
+                paddingBottom: headerPadding,
+                backgroundColor: headerBgOpacity, // Framer Motion handles MotionValues in style
+                backdropFilter: headerBlur,
+                borderBottomColor: headerBorder,
+                borderBottomWidth: "1px",
+                borderBottomStyle: "solid",
+            }}
+            className="fixed top-0 left-0 right-0 z-50 transition-colors duration-200"
         >
             <nav className="container max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
@@ -110,6 +116,6 @@ export function Navbar() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </header>
+        </motion.header>
     );
 }

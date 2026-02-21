@@ -64,68 +64,98 @@ export function WorkGrid() {
                 {/* Bento Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[320px]">
                     <AnimatePresence mode="popLayout">
-                        {filtered.map((project) => (
-                            <motion.div
-                                key={project.id}
-                                layout
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                className={`group relative rounded-2xl overflow-hidden bg-white/[0.03] backdrop-blur-md border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300 ${project.size === "large" ? "sm:col-span-2" : ""
-                                    }`}
-                            >
-                                {/* Border Beam on featured cards */}
-                                {project.size === "large" && (
-                                    <BorderBeam
-                                        size={300}
-                                        duration={12}
-                                        colorFrom="#22d3ee"
-                                        colorTo="#2563eb"
-                                        borderWidth={1.5}
-                                    />
-                                )}
+                        {filtered.map((project, i) => {
+                            // Flashlight + 3D Tilt logic
+                            const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+                                const rect = e.currentTarget.getBoundingClientRect();
+                                const x = e.clientX - rect.left;
+                                const y = e.clientY - rect.top;
 
-                                {/* Subtle gradient background */}
-                                <div className="absolute inset-0 opacity-20" style={{
-                                    background: `radial-gradient(ellipse at 50% 0%, ${project.category === "ai" ? "rgba(34,211,238,0.12)" : project.category === "web" ? "rgba(16,185,129,0.12)" : "rgba(245,158,11,0.12)"}, transparent 70%)`,
-                                }} />
+                                // Calculate rotation (max 10deg)
+                                const rotateY = ((x / rect.width) - 0.5) * 12;
+                                const rotateX = ((y / rect.height) - 0.5) * -12;
 
-                                <div className="relative z-10 p-9 h-full flex flex-col justify-between">
-                                    <div>
-                                        <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/[0.06] text-slate-400 mb-4">
-                                            {project.badge}
-                                        </span>
-                                        <h3 className="font-bold tracking-tight text-lg text-white mb-2">
-                                            {project.name}
-                                        </h3>
-                                        <p className="text-sm text-slate-400 leading-relaxed line-clamp-2">
-                                            {project.description}
-                                        </p>
-                                    </div>
+                                e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                                e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+                                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                            };
 
-                                    <div>
-                                        <div className="flex flex-wrap gap-1.5 mb-4">
-                                            {project.tags.map((tag) => (
-                                                <span key={tag} className="px-2 py-0.5 text-xs font-mono rounded bg-white/5 text-slate-500">
-                                                    {tag}
-                                                </span>
-                                            ))}
+                            const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+                                e.currentTarget.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                            };
+
+                            return (
+                                <motion.div
+                                    key={project.id}
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.98, filter: "blur(10px)", y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)", y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
+                                    transition={{
+                                        duration: 0.8,
+                                        delay: i * 0.05,
+                                        ease: [0.16, 1, 0.3, 1]
+                                    }}
+                                    onMouseMove={handleMouseMove}
+                                    onMouseLeave={handleMouseLeave}
+                                    className={`group relative rounded-2xl overflow-hidden bg-white/[0.03] backdrop-blur-md border border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.05] transition-all duration-300 flashlight-card ${project.size === "large" ? "sm:col-span-2" : ""
+                                        }`}
+                                    style={{ transition: "transform 0.15s ease-out, background 0.3s ease, border-color 0.3s ease" }}
+                                >
+                                    {/* Border Beam on featured cards */}
+                                    {project.size === "large" && (
+                                        <BorderBeam
+                                            size={300}
+                                            duration={12}
+                                            colorFrom="#22d3ee"
+                                            colorTo="#2563eb"
+                                            borderWidth={1.5}
+                                        />
+                                    )}
+
+                                    {/* Subtle gradient background */}
+                                    <div className="absolute inset-0 opacity-20" style={{
+                                        background: `radial-gradient(ellipse at 50% 0%, ${project.category === "ai" ? "rgba(34,211,238,0.12)" : project.category === "web" ? "rgba(16,185,129,0.12)" : "rgba(245,158,11,0.12)"}, transparent 70%)`,
+                                    }} />
+
+                                    <div className="relative z-10 p-12 h-full flex flex-col justify-between">
+                                        <div>
+                                            <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/[0.06] text-slate-400 mb-6 uppercase tracking-wider">
+                                                {project.badge}
+                                            </span>
+                                            <h3 className="font-bold tracking-tight text-2xl text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                                                {project.name}
+                                            </h3>
+                                            <p className="text-base text-slate-400 leading-relaxed line-clamp-3">
+                                                {project.description}
+                                            </p>
                                         </div>
-                                        <div className="flex items-center gap-3">
-                                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-cyan-400 transition-colors">
-                                                <Github size={14} /> Code
-                                            </a>
-                                            {project.live && (
-                                                <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-emerald-400 transition-colors">
-                                                    <ExternalLink size={14} /> Live
+
+                                        <div>
+                                            <div className="flex flex-wrap gap-2 mb-6 opacity-60 group-hover:opacity-100 transition-opacity">
+                                                {project.tags.map((tag) => (
+                                                    <span key={tag} className="px-2 py-0.5 text-xs font-mono rounded bg-white/5 border border-white/5 text-slate-500">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <div className="flex items-center gap-6">
+                                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-cyan-400 transition-all group/link">
+                                                    <Github size={16} />
+                                                    <span className="group-hover/link:underline">Code</span>
                                                 </a>
-                                            )}
+                                                {project.live && (
+                                                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-emerald-400 transition-all group/link">
+                                                        <ExternalLink size={16} />
+                                                        <span className="group-hover/link:underline">Live Demo</span>
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            );
+                        })}
                     </AnimatePresence>
                 </div>
 

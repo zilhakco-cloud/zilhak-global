@@ -46,8 +46,8 @@ export default function InvestorsPage() {
             <section className="section">
                 <div className="container max-w-4xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="glass rounded-2xl p-12">
-                            <h3 className="font-display font-bold text-xl mb-4 text-red-400">The Problem</h3>
+                        <div className="glass rounded-3xl p-16 md:p-20">
+                            <h3 className="font-display font-bold text-2xl mb-6 text-red-400 uppercase tracking-wider">The Problem</h3>
                             <ul className="space-y-3 text-sm text-z-text-muted">
                                 <li className="flex items-start gap-2"><span className="text-red-400 mt-1">•</span> Pakistani SMEs are 5-10 years behind on AI adoption</li>
                                 <li className="flex items-start gap-2"><span className="text-red-400 mt-1">•</span> Massive talent gap — demand for AI builders far exceeds supply</li>
@@ -55,8 +55,8 @@ export default function InvestorsPage() {
                                 <li className="flex items-start gap-2"><span className="text-red-400 mt-1">•</span> No bridge between university talent and industry needs</li>
                             </ul>
                         </div>
-                        <div className="glass rounded-2xl p-12" style={{ background: "linear-gradient(135deg, rgba(0,229,195,0.05), transparent)" }}>
-                            <h3 className="font-display font-bold text-xl mb-4 text-z-teal">Our Solution</h3>
+                        <div className="glass rounded-3xl p-16 md:p-20" style={{ background: "linear-gradient(135deg, rgba(0,229,195,0.05), transparent)" }}>
+                            <h3 className="font-display font-bold text-2xl mb-6 text-z-teal uppercase tracking-wider">Our Solution</h3>
                             <ul className="space-y-3 text-sm text-z-text-muted">
                                 <li className="flex items-start gap-2"><span className="text-z-teal mt-1">•</span> Zilhak builds tools — AI chatbots, agentic systems, automations</li>
                                 <li className="flex items-start gap-2"><span className="text-z-teal mt-1">•</span> DigiNext grows talent — 150+ students trained in practical AI</li>

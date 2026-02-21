@@ -316,6 +316,49 @@ pre {
   background-size: 24px 24px;
 }
 
+/* === LEVEL 3: SENSORIAL MOTION === */
+@keyframes reveal-blur {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal-blur {
+  animation: reveal-blur 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* === FLASHLIGHT HOVER Foundation === */
+.flashlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.flashlight-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(34, 211, 238, 0.15) 0%,
+      transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.flashlight-card:hover::before {
+  opacity: 1;
+}
+
 /* === REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
 
