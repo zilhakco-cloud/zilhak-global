@@ -86,6 +86,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async />
         <LenisProvider>
           <CustomCursor />
           <LightLeak />
