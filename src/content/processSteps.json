@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "step": 1,
+            "title": "Discover",
+            "description": "We learn your business, goals, and challenges through deep discovery sessions."
+        },
+        {
+            "step": 2,
+            "title": "Design",
+            "description": "Architecture, wireframes, and technical specs — built before a single line of code."
+        },
+        {
+            "step": 3,
+            "title": "Build",
+            "description": "Agile sprints with weekly demos. You see progress constantly, not just at the end."
+        },
+        {
+            "step": 4,
+            "title": "Scale",
+            "description": "Launch, monitor, and iterate. We stay with you to ensure sustained growth."
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "siteName": "Zilhak Global",
+    "tagline": "GLOBAL",
+    "hero": {
+        "badge": "FBR-Registered AI & Tech Company",
+        "titleMain": "AI That Thinks.",
+        "titleGradient": "Solutions That Scale.",
+        "description": "We build agentic AI systems, ship production apps, and grow businesses with intelligent automations — backed by 150+ trained builders."
+    },
+    "contact": {
+        "email": "hello@zilhakglobal.com",
+        "address": "Sargodha, Punjab, Pakistan",
+        "fbrStatus": "FBR Registered Entity"
+    },
+    "socials": {
+        "github": "https://github.com/zilhak-global",
+        "linkedin": "https://linkedin.com/company/zilhak-global",
+        "twitter": "https://twitter.com/zilhakglobal"
+    }
+}

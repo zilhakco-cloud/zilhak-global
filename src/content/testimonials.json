@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "name": "Ahmad Raza",
+            "role": "CEO, Raza Textiles Lahore",
+            "quote": "Zilhak built us a WhatsApp chatbot that handles 3,000 customer queries a month. Our support team went from 5 people to 2.",
+            "avatar": "/avatars/avatar1.jpg"
+        },
+        {
+            "name": "Sarah Khan",
+            "role": "CTO, MedPak Health",
+            "quote": "The agentic AI system they built reduced our data processing time by 60%. It literally thinks through problems on its own.",
+            "avatar": "/avatars/avatar2.jpg"
+        },
+        {
+            "name": "Bilal Hussain",
+            "role": "Founder, EduPak",
+            "quote": "Their team delivered our mobile app 2 weeks ahead of schedule. The quality is on par with anything in the App Store.",
+            "avatar": "/avatars/avatar3.jpg"
+        },
+        {
+            "name": "Dr. Ayesha Siddiqui",
+            "role": "Professor, Superior University",
+            "quote": "DigiNext has trained 150+ students in AI. The quality of projects coming out of this society is remarkable.",
+            "avatar": "/avatars/avatar4.jpg"
+        },
+        {
+            "name": "Usman Ali",
+            "role": "Director, TechVentures PK",
+            "quote": "We looked at agencies in Islamabad, Lahore, and Karachi. Zilhak's technical depth was unmatched — and they're right here in Sargodha.",
+            "avatar": "/avatars/avatar5.jpg"
+        },
+        {
+            "name": "Maria Fatima",
+            "role": "Marketing Head, GreenLeaf PK",
+            "quote": "Our organic traffic grew 240% in 6 months. Their SEO strategy wasn't just keywords — it was a complete growth system.",
+            "avatar": "/avatars/avatar6.jpg"
+        }
+    ]
+}

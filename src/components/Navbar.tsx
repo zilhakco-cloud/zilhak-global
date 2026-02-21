@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { siteConfig } from "@/lib/data";
 
 const links = [
     { href: "/", label: "Home" },
@@ -50,8 +51,8 @@ export function Navbar() {
                         <span className="font-bold text-lg text-white tracking-tight">
                             ZILHAK
                         </span>
-                        <span className="font-light text-xs text-slate-500 ml-1 tracking-widest">
-                            GLOBAL
+                        <span className="font-light text-xs text-slate-500 ml-1 tracking-widest uppercase">
+                            {siteConfig.tagline}
                         </span>
                     </div>
                 </Link>

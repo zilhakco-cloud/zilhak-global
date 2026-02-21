@@ -7,6 +7,7 @@ import {
     MapPin,
     Phone,
 } from "lucide-react";
+import { siteConfig } from "@/lib/data";
 
 const footerLinks = {
     Company: [
@@ -33,10 +34,10 @@ const footerLinks = {
 };
 
 const socials = [
-    { icon: Github, href: "https://github.com/zilhak-global", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/company/zilhak-global", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/zilhakglobal", label: "Twitter" },
-    { icon: Mail, href: "mailto:hello@zilhakglobal.com", label: "Email" },
+    { icon: Github, href: siteConfig.socials.github, label: "GitHub" },
+    { icon: Linkedin, href: siteConfig.socials.linkedin, label: "LinkedIn" },
+    { icon: Twitter, href: siteConfig.socials.twitter, label: "Twitter" },
+    { icon: Mail, href: `mailto:${siteConfig.contact.email}`, label: "Email" },
 ];
 
 export function Footer() {
@@ -112,11 +113,11 @@ export function Footer() {
                         <div className="flex flex-col sm:flex-row items-center gap-4">
                             <div className="flex items-center gap-1.5">
                                 <MapPin size={14} />
-                                <span>Sargodha, Punjab, Pakistan</span>
+                                <span>{siteConfig.contact.address}</span>
                             </div>
                             <div className="flex items-center gap-1.5">
                                 <Phone size={14} />
-                                <span>FBR Registered Entity</span>
+                                <span>{siteConfig.contact.fbrStatus}</span>
                             </div>
                         </div>
                         <p>

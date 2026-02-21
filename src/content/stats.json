@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "label": "Students Trained",
+            "value": 150,
+            "suffix": "+"
+        },
+        {
+            "label": "Projects Delivered",
+            "value": 25,
+            "suffix": "+"
+        },
+        {
+            "label": "Service Verticals",
+            "value": 6,
+            "suffix": ""
+        },
+        {
+            "label": "Client Satisfaction",
+            "value": 98,
+            "suffix": "%"
+        }
+    ]
+}

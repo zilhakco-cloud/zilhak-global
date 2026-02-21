@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "label": "Active Members",
+            "value": 150,
+            "suffix": "+"
+        },
+        {
+            "label": "Institution",
+            "value": "Superior University",
+            "suffix": ""
+        },
+        {
+            "label": "Focus",
+            "value": "AI & Technology",
+            "suffix": ""
+        },
+        {
+            "label": "Founded",
+            "value": 2024,
+            "suffix": ""
+        }
+    ]
+}

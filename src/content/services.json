@@ -1,0 +1,58 @@
+{
+    "items": [
+        {
+            "id": "app-dev",
+            "icon": "Smartphone",
+            "title": "App Development",
+            "tagline": "From idea to App Store in 90 days",
+            "description": "Cross-platform mobile apps built with React Native and Flutter. From MVP to scale — we ship apps that users love.",
+            "trust": "3 apps shipped with 10K+ combined downloads",
+            "color": "blue"
+        },
+        {
+            "id": "web-dev",
+            "icon": "Globe",
+            "title": "Web Development",
+            "tagline": "Websites that convert visitors into clients",
+            "description": "High-performance websites and web apps with Next.js, React, and modern tooling. SEO-first, mobile-first, always.",
+            "trust": "Core Web Vitals: 95+ across all projects",
+            "color": "teal"
+        },
+        {
+            "id": "seo",
+            "icon": "TrendingUp",
+            "title": "SEO & Growth",
+            "tagline": "Organic traffic that compounds while you sleep",
+            "description": "Data-driven SEO strategies, content marketing, and growth engineering that delivers measurable ROI.",
+            "trust": "240% average traffic growth in 6 months",
+            "color": "gold"
+        },
+        {
+            "id": "ai-auto",
+            "icon": "Cpu",
+            "title": "AI Automations",
+            "tagline": "Replace 10 hours of work with one AI workflow",
+            "description": "Custom AI workflows that automate repetitive tasks, extract insights from data, and streamline operations.",
+            "trust": "1,200+ hours saved for clients monthly",
+            "color": "purple"
+        },
+        {
+            "id": "agentic",
+            "icon": "Bot",
+            "title": "Agentic AI Systems",
+            "tagline": "AI that thinks, plans, and acts autonomously",
+            "description": "Multi-agent architectures that can reason, plan, and execute complex tasks with minimal human oversight.",
+            "trust": "Autonomous task completion rate: 94%",
+            "color": "blue"
+        },
+        {
+            "id": "chatbots",
+            "icon": "MessageSquare",
+            "title": "AI Chatbots",
+            "tagline": "Your smartest employee — available 24/7",
+            "description": "Intelligent conversational agents for WhatsApp, web, and enterprise — trained on your data, speaking your brand.",
+            "trust": "3,000+ queries handled monthly per bot",
+            "color": "teal"
+        }
+    ]
+}

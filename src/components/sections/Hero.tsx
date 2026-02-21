@@ -159,6 +159,8 @@ const DynamicScene = dynamic(() => Promise.resolve(Scene), {
     loading: () => <StaticFallback />,
 });
 
+import { siteConfig } from "@/lib/data";
+
 export function Hero() {
     const [showCanvas, setShowCanvas] = useState(false);
     const [reducedMotion, setReducedMotion] = useState(false);
@@ -195,7 +197,7 @@ export function Hero() {
                 >
                     <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full glass border-white/10 text-sm text-slate-400 mb-10 shadow-xl">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-glow" />
-                        FBR-Registered AI & Tech Company
+                        {siteConfig.hero.badge}
                     </div>
                 </motion.div>
 
@@ -205,9 +207,9 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 1.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    AI That Thinks.
+                    {siteConfig.hero.titleMain}
                     <br />
-                    <span className="gradient-text">Solutions That Scale.</span>
+                    <span className="gradient-text">{siteConfig.hero.titleGradient}</span>
                 </motion.h1>
 
                 <motion.p
@@ -216,8 +218,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    We build agentic AI systems, ship production apps, and grow businesses
-                    with intelligent automations — backed by 150+ trained builders.
+                    {siteConfig.hero.description}
                 </motion.p>
 
                 <motion.div

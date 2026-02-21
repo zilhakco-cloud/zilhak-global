@@ -1,0 +1,104 @@
+{
+    "items": [
+        {
+            "id": "1",
+            "name": "ClawBot — WhatsApp AI Assistant",
+            "description": "Agentic AI chatbot handling 3,000+ customer queries/month for retail businesses in Lahore.",
+            "image": "/projects/clawbot.jpg",
+            "tags": [
+                "Python",
+                "LangChain",
+                "WhatsApp API",
+                "OpenAI"
+            ],
+            "category": "ai",
+            "size": "large",
+            "badge": "Built by Zilhak Global",
+            "github": "https://github.com/zilhak-global/clawbot",
+            "live": "https://clawbot.zilhakglobal.com"
+        },
+        {
+            "id": "2",
+            "name": "DigiNext Portal",
+            "description": "Full-stack student management portal for DigiNext Society — workshops, projects, and member tracking.",
+            "image": "/projects/diginext-portal.jpg",
+            "tags": [
+                "Next.js",
+                "TypeScript",
+                "Prisma",
+                "PostgreSQL"
+            ],
+            "category": "web",
+            "size": "large",
+            "badge": "Built via DigiNext x Zilhak",
+            "github": "https://github.com/zilhak-global/diginext-portal",
+            "live": "https://diginext.zilhakglobal.com"
+        },
+        {
+            "id": "3",
+            "name": "SmartInvoice AI",
+            "description": "AI-powered invoice processing system that extracts data from scanned documents with 98% accuracy.",
+            "image": "/projects/smartinvoice.jpg",
+            "tags": [
+                "Python",
+                "Computer Vision",
+                "OCR",
+                "FastAPI"
+            ],
+            "category": "ai",
+            "size": "small",
+            "badge": "Built by Zilhak Global",
+            "github": "https://github.com/zilhak-global/smart-invoice",
+            "live": null
+        },
+        {
+            "id": "4",
+            "name": "FitTrack Pro",
+            "description": "Cross-platform fitness tracking app with AI-powered workout recommendations and progress analytics.",
+            "image": "/projects/fittrack.jpg",
+            "tags": [
+                "React Native",
+                "Firebase",
+                "TensorFlow Lite"
+            ],
+            "category": "app",
+            "size": "small",
+            "badge": "Built via DigiNext x Zilhak",
+            "github": "https://github.com/zilhak-global/fittrack-pro",
+            "live": "https://fittrack.app"
+        },
+        {
+            "id": "5",
+            "name": "AgentFlow Platform",
+            "description": "No-code platform for building and deploying agentic AI workflows. Drag-and-drop agent orchestration.",
+            "image": "/projects/agentflow.jpg",
+            "tags": [
+                "Next.js",
+                "Python",
+                "LangGraph",
+                "Redis"
+            ],
+            "category": "ai",
+            "size": "small",
+            "badge": "Built by Zilhak Global",
+            "github": "https://github.com/zilhak-global/agentflow",
+            "live": null
+        },
+        {
+            "id": "6",
+            "name": "Sargodha Business Directory",
+            "description": "SEO-optimized local business directory with AI-powered recommendations and reviews for Sargodha businesses.",
+            "image": "/projects/sargodha-biz.jpg",
+            "tags": [
+                "Next.js",
+                "Supabase",
+                "Google Maps API"
+            ],
+            "category": "web",
+            "size": "small",
+            "badge": "Built via DigiNext x Zilhak",
+            "github": "https://github.com/zilhak-global/sargodha-directory",
+            "live": "https://sargodhabiz.com"
+        }
+    ]
+}
